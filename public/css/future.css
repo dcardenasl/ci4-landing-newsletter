@@ -1,0 +1,20 @@
+.future-section {
+  background-color: var(--background-dark);
+}
+
+.future-title {
+  font-family: var(--font-secondary);
+  font-weight: var(--fw-medium);
+  /* font-size: var(--fs-5xl); */
+  color: var(--text-dark);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.future-description {
+  font-family: var(--font-secondary);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-base);
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-2xl);
+}

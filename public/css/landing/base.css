@@ -1,0 +1,66 @@
+/* CSS Variables */
+:root {
+  /* Colors */
+  --primary-green: #97bdac;
+  --primary-blue: #154259;
+  --background-light: #f5f5f0;
+  --text-dark: #154259;
+  --text-gray: #666666;
+  --white: #ffffff;
+  --background-gray: #eee8da;
+  --input-gray: #dbdbdb;
+  --background-dark: #eae3d2;
+
+  /* Fonts */
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Font Sizes */
+  --fs-xs: 11px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-2xl: 23px;
+  --fs-3xl: 25px;
+  --fs-4xl: 32px;
+  --fs-5xl: 48px;
+  --fs-6xl: 56px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-secondary);
+  font-weight: var(--fw-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--background-gray);
+  overflow-x: hidden;
+}

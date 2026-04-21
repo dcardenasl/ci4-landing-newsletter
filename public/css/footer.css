@@ -1,0 +1,10 @@
+.footer-section {
+  background-image: url("/public/images/landing/footer-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.footer-description {
+  font-weight: var(--fw-light);
+  margin-bottom: var(--spacing-2xl);
+}

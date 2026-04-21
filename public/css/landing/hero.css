@@ -1,0 +1,42 @@
+/* Hero Section */
+.hero-section {
+  margin-top: 40px;
+}
+
+.hero-title {
+  display: inline-block;
+  transform: scale(1, 1.1);
+  margin-bottom: var(--space-8);
+}
+
+.hero-title strong {
+  font-weight: var(--fw-bold);
+  color: var(--text-secondary);
+}
+
+.hero-description {
+  margin-bottom: var(--space-8);
+}
+
+.hero-description strong {
+  font-weight: var(--fw-semibold);
+  color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 425px) {
+  .hero-section {
+    margin-top: 80px;
+  }
+}
+
+.hero-title {
+  opacity: 0;
+  transform: translateY(30px) scale(1, 1.1);
+  transition: all 0.8s ease-out;
+}
+
+.hero-title.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1, 1.1);
+}

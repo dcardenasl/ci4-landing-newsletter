@@ -1,0 +1,55 @@
+#--------------------------------------------------------------------
+# Example Environment Configuration file
+#
+# This file can be used as a starting point for your own
+# custom .env files, and contains most of the possible settings
+# available in a default install.
+#
+# By default, all of the settings are commented out. If you want
+# to override the setting, you must un-comment it by removing the '#'
+# at the beginning of the line.
+#--------------------------------------------------------------------
+
+#--------------------------------------------------------------------
+# ENVIRONMENT
+#--------------------------------------------------------------------
+
+CI_ENVIRONMENT = production
+
+#--------------------------------------------------------------------
+# APP
+#--------------------------------------------------------------------
+
+app.baseURL = 'https://yourdomain.com'
+# app.forceGlobalSecureRequests = false
+# app.CSPEnabled = false
+
+#--------------------------------------------------------------------
+# LANDING NEWSLETTER CI4 - SITE CONFIGURATION
+#--------------------------------------------------------------------
+
+# Which site is this app serving?
+SITE_ID = filma
+
+# External API configuration
+API_BASE_URL = https://api.yourdomain.com
+API_KEY = sk_live_xxxxxxxxxxxxxxxxxxxx
+
+# reCAPTCHA v3 (site key only - secret verification is done by the API)
+RECAPTCHA_SITE_KEY = your_recaptcha_site_key_here
+
+# Optional: Google Analytics and Tag Manager
+GA4_ID =
+GTM_ID =
+
+#--------------------------------------------------------------------
+# ENCRYPTION
+#--------------------------------------------------------------------
+
+# encryption.key =
+
+#--------------------------------------------------------------------
+# LOGGER
+#--------------------------------------------------------------------
+
+# logger.threshold = 4

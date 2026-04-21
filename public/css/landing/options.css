@@ -1,0 +1,8 @@
+.option-title {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.option-description strong {
+  font-weight: var(--fw-semibold);
+}

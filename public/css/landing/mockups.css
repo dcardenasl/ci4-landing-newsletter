@@ -1,0 +1,363 @@
+/* ============================================
+   LAPTOP MOCKUP STYLES
+   ============================================ */
+.laptop-mockup {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.laptop {
+  position: relative;
+  width: 450px;
+  height: 280px;
+  background: linear-gradient(145deg, #2d3748, #1a202c);
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 3px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: rotateX(12deg) rotateY(-3deg);
+}
+
+.laptop::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: -25px;
+  right: -25px;
+  height: 20px;
+  background: linear-gradient(145deg, #171923, #2d3748);
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.laptop::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+.laptop-screen {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 45px;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   LAPTOP BROWSER INTERFACE
+   ============================================ */
+.browser-laptop {
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+  position: relative;
+}
+
+.browser-header-laptop {
+  height: 40px;
+  background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #cbd5e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.browser-buttons-laptop {
+  display: flex;
+  gap: 10px;
+}
+
+.browser-button-laptop {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.browser-button-laptop:nth-child(1) {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.browser-button-laptop:nth-child(2) {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.browser-button-laptop:nth-child(3) {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.address-bar-laptop {
+  flex: 1;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 24px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.website-content-laptop {
+  height: calc(100% - 40px);
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-content-laptop {
+  width: 100%;
+  /* Reemplaza esta URL con la ruta de tu imagen PNG larga */
+  background-image: url("../../images/mockup-profile-laptop.webp");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  /* Altura de respaldo si no hay imagen */
+  background-color: #f8fafc;
+  animation: scrollLaptop 12s ease-in-out infinite;
+  position: relative;
+  /* Ajusta esta altura según el tamaño real de tu imagen */
+  height: 3174px;
+}
+
+.scrolling-content-laptop-alt {
+  width: 100%;
+  /* Reemplaza esta URL con la ruta de tu imagen PNG larga */
+  background-image: url("../../images/mockup-home-laptop.webp");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  /* Altura de respaldo si no hay imagen */
+  background-color: #f8fafc;
+  animation: scrollLaptopAlt 8s ease-in-out infinite;
+  position: relative;
+  /* Ajusta esta altura según el tamaño real de tu imagen */
+  height: 1723px;
+}
+
+/* ============================================
+   PHONE MOCKUP STYLES
+   ============================================ */
+.phone-mockup {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.phone {
+  position: relative;
+  width: 200px;
+  height: 380px;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  border-radius: 25px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transform: rotateY(8deg) rotateX(-5deg);
+}
+
+.phone-screen {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ============================================
+   PHONE BROWSER INTERFACE
+   ============================================ */
+.browser-phone {
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+  position: relative;
+}
+
+.browser-header-phone {
+  height: 25px;
+  background: linear-gradient(to bottom, #e2e8f0, #cbd5e0);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid #a0aec0;
+}
+
+.browser-buttons-phone {
+  display: flex;
+  gap: 4px;
+}
+
+.browser-button-phone {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.browser-button-phone:nth-child(1) {
+  background: #ef4444;
+}
+
+.browser-button-phone:nth-child(2) {
+  background: #f59e0b;
+}
+
+.browser-button-phone:nth-child(3) {
+  background: #10b981;
+}
+
+.address-bar-phone {
+  flex: 1;
+  margin-left: 10px;
+  height: 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.website-content-phone {
+  height: calc(100% - 25px);
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-content-phone {
+  width: 100%;
+  /* Reemplaza esta URL con la ruta de tu imagen PNG larga para móvil */
+  background-image: url("../images/tu-imagen-mobile.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  /* Color de respaldo si no hay imagen */
+  background-color: #f8fafc;
+  animation: scrollPhone 6s ease-in-out infinite;
+  position: relative;
+  /* Ajusta esta altura según el tamaño real de tu imagen */
+  height: 1500px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes scrollLaptop {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  80%,
+  100% {
+    transform: translateY(-620px);
+  }
+}
+@keyframes scrollLaptopAlt {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  80%,
+  100% {
+    transform: translateY(-330px);
+  }
+}
+
+@keyframes scrollPhone {
+  0%,
+  25% {
+    transform: translateY(0);
+  }
+  75%,
+  100% {
+    transform: translateY(-400px);
+  }
+}
+
+/* ============================================
+   FEATURE TEXT STYLES
+   ============================================ */
+.feature-text {
+  margin-top: 2rem;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #e0e7ff;
+}
+
+.feature-description {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .laptop {
+    width: 400px;
+    height: 250px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .features-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .laptop {
+    width: 320px;
+    height: 200px;
+  }
+
+  .phone {
+    width: 180px;
+    height: 340px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .laptop {
+    width: 280px;
+    height: 175px;
+  }
+
+  .phone {
+    width: 160px;
+    height: 300px;
+  }
+}
