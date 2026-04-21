@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Config\SiteConfig;
+
 class HomeController extends BaseController
 {
     private const SUPPORTED_LOCALES = ['es', 'en', 'pt', 'it', 'fr'];
@@ -12,10 +14,14 @@ class HomeController extends BaseController
         $locale = $this->validateLocale($locale);
         service('language')->setLocale($locale);
 
-        return view('frontend/pages/home/landing', [
+        $siteConfig = config(SiteConfig::class);
+
+        return view('frontend/pages/home/index', [
             'locale' => $locale,
             'supportedLocales' => get_language_selector_data($locale),
             'appConfig' => $this->buildAppConfig($locale),
+            'siteConfig' => $siteConfig,
+            'enabledSections' => $siteConfig->getEnabledSections(),
         ]);
     }
 
