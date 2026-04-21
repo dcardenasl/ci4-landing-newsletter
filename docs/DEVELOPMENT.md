@@ -34,7 +34,7 @@ Edit `.env` with your settings:
 CI_ENVIRONMENT = development
 app.baseURL = http://localhost:8080/
 
-SITE_ID = filma
+SITE_ID = my-newsletter
 API_BASE_URL = http://localhost:3000
 API_KEY = dev_key_12345
 RECAPTCHA_SITE_KEY = your_test_key

@@ -86,10 +86,10 @@ public/
 ### Site Branding & Customization
 | Variable | Purpose | Default |
 |----------|---------|---------|
-| `siteConfig.siteName` | Site name (meta tags, alt text) | `Filma` |
-| `siteConfig.siteTagline` | Tagline in header | `Find your crew` |
-| `siteConfig.logoPath` | Dark logo path (relative to `/public/`) | `images/logos/filma-black.svg` |
-| `siteConfig.logoWhitePath` | White logo path (relative to `/public/`) | `images/logos/filma-white.svg` |
+| `siteConfig.siteName` | Site name (meta tags, alt text) | `NewsLanding` |
+| `siteConfig.siteTagline` | Tagline in header | `Subscription Landing Template` |
+| `siteConfig.logoPath` | Dark logo path (relative to `/public/`) | `images/logos/logo-dark.svg` |
+| `siteConfig.logoWhitePath` | White logo path (relative to `/public/`) | `images/logos/logo-light.svg` |
 | `siteConfig.colorPrimary` | Primary brand color | `#e63946` |
 | `siteConfig.colorSecondary` | Secondary color | `#457b9d` |
 | `siteConfig.colorAccent` | Accent color | `#f1faee` |

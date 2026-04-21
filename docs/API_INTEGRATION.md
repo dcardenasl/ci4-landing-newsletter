@@ -116,7 +116,7 @@ Set in `.env`:
 ```ini
 API_BASE_URL = https://api.yourdomain.com
 API_KEY = sk_live_your_secret_key
-SITE_ID = filma
+SITE_ID = my-newsletter
 ```
 
 ## Testing the Integration

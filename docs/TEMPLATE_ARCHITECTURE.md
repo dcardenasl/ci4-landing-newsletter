@@ -88,8 +88,8 @@ All configurable values live in `.env`:
 
 ```env
 # Brand identity
-siteConfig.siteName = "Filma"
-siteConfig.logoPath = "images/logos/filma-black.svg"
+siteConfig.siteName = "NewsLanding"
+siteConfig.logoPath = "images/logos/logo-dark.svg"
 
 # Theme colors (injected as CSS custom properties)
 siteConfig.colorPrimary = "#e63946"

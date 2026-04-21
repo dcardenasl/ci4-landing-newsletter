@@ -30,7 +30,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= lang('LandingPage.meta.og_title') ?>">
     <meta property="og:description" content="<?= lang('LandingPage.meta.og_description') ?>">
-    <meta property="og:image" content="/images/logos/fil-yellow.png">
+    <meta property="og:image" content="/images/logos/logo-sm-accent.png">
     <meta property="og:url" content="<?= current_url() ?>">
     <meta property="og:site_name" content="<?= $siteConfig->siteName ?>">
     <meta property="og:locale" content="<?= $locale ?>_<?= strtoupper($locale) ?>">
@@ -39,7 +39,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= lang('LandingPage.meta.twitter_title') ?>">
     <meta name="twitter:description" content="<?= lang('LandingPage.meta.twitter_description') ?>">
-    <meta name="twitter:image" content="/images/logos/fill.png">
+    <meta name="twitter:image" content="/images/logos/logo-sm-accent.png">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="<?= base_url() ?>">

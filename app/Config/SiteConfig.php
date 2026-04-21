@@ -11,8 +11,8 @@ class SiteConfig extends BaseConfig
      */
     public string $siteName = 'NewsLanding';
     public string $siteTagline = 'Subscription Landing Template';
-    public string $logoPath = 'images/logos/filma-black.svg';
-    public string $logoWhitePath = 'images/logos/filma-white.svg';
+    public string $logoPath = 'images/logos/logo-dark.svg';
+    public string $logoWhitePath = 'images/logos/logo-light.svg';
 
     /**
      * Color Palette (injected as CSS custom properties)

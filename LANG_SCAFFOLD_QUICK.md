@@ -126,17 +126,17 @@ return [
 <?php
 return [
     'meta' => [
-        'title' => 'Filma - Die professionelle Audiovisuelle Netzwerk',
+        'title' => 'NewsLanding - Plantilla de Landing Page de Suscripción',
         'description' => 'Verbinde dich mit den besten Audiovisuelle-Profis...',
         'keywords' => 'crew finder, audiovisuelle, produktion, regisseure',
-        'og_title' => 'Filma - Audiovisuelle Netzwerk',
+        'og_title' => 'NewsLanding - Plantilla de Landing Page',
         'og_description' => 'Professionelle Crew und Services finden...',
-        'twitter_title' => 'Filma - Finde dein Team',
+        'twitter_title' => 'NewsLanding - Subscription Landing Page',
         'twitter_description' => 'Audiovisuelle Profis verbinden...'
     ],
 
     'header' => [
-        'logo_alt' => 'Filma Logo',
+        'logo_alt' => 'NewsLanding Logo',
         'tagline' => 'Crew Finder'
     ],
 
@@ -167,9 +167,9 @@ return [
         'description' => 'Über unsere Plattform kannst du planen, Budgets organisieren und deine Film- oder Audiovisualprojekte verbessern.',
         'questions' => [
             [
-                'question' => 'Wer ist Filma für?',
+                'question' => 'Was ist NewsLanding?',
                 'answer' => [
-                    'intro' => 'Filma richtet sich an Profis der Audiovisuellen Industrie...',
+                    'intro' => 'NewsLanding ist ein CodeIgniter 4 Template für Subscription Landing Pages...',
                     'benefits' => [],
                     'outro' => 'Unsere Plattform erleichtert die Verbindung zwischen diesen Profis...'
                 ],
@@ -179,10 +179,10 @@ return [
     ],
 
     'footer' => [
-        'newsletter_text' => 'Sei der Erste, der von Filma-Neuigkeiten erfährt.',
+        'newsletter_text' => 'Sei der Erste, der von NewsLanding-Updates erfährt.',
         'email_placeholder' => 'Gib deine E-Mail ein',
         'subscribe_btn' => 'Abonnieren',
-        'copyright' => '© 2026 Filma. Alle Rechte vorbehalten.'
+        'copyright' => '© 2026 NewsLanding. Alle Rechte vorbehalten.'
     ]
 ];
 ```

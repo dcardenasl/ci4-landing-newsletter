@@ -394,7 +394,7 @@ Editar cada archivo y llenar los valores:
 ```php
 // app/Language/es/LandingPage.php
 'meta' => [
-    'title' => 'Filma - La Red Profesional del Audiovisual',
+    'title' => 'NewsLanding - Plantilla de Landing Page de Suscripción',
     'description' => 'Conecta con los mejores profesionales...',
     // ...
 ],

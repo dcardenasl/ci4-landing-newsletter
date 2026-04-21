@@ -161,7 +161,7 @@ class Newsletter {
       // Preparar datos para enviar (incluir código de invitación si existe)
       const requestData = {
         email: email,
-        source: "bym-landing",
+        source: window.APP_CONFIG?.siteId || "newsletter-landing",
         timestamp: new Date().toISOString(),
         recaptcha_token: recaptchaToken,
       };

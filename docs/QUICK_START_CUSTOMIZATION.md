@@ -46,10 +46,10 @@ Open `.env` in a text editor. You'll see:
 #--------------------------------------------------------------------
 
 # Site identity
-siteConfig.siteName = "Filma"
-siteConfig.siteTagline = "Find your crew"
-siteConfig.logoPath = images/logos/filma-black.svg
-siteConfig.logoWhitePath = images/logos/filma-white.svg
+siteConfig.siteName = "NewsLanding"
+siteConfig.siteTagline = "Subscription Landing Template"
+siteConfig.logoPath = images/logos/logo-dark.svg
+siteConfig.logoWhitePath = images/logos/logo-light.svg
 
 # Color palette (used in CSS custom properties)
 siteConfig.colorPrimary = #e63946
