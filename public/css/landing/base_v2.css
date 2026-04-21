@@ -1,9 +1,9 @@
 /* CSS Variables */
 :root {
-  /* Color System */
-  --primary: #ffc428;
-  --secondary: #154259f5;
-  --accent: #ffc428;
+  /* Color System - Overridable from PHP */
+  --primary: var(--color-primary, #e63946);
+  --secondary: var(--color-secondary, #457b9d);
+  --accent: var(--color-bg-accent, #1d3557);
 
   /* Neutral Colors */
   --white: #ffffff;
@@ -16,11 +16,11 @@
 
   /* Semantic Colors */
   --background: var(--white);
-  --background-alt: var(--alt-white);
-  --background-dark: var(--dark-grey);
+  --background-alt: var(--color-bg-alt, #f8f9fa);
+  --background-dark: var(--color-bg-accent, #1d3557);
   --surface: var(--white);
   --text-primary: var(--dark-grey);
-  --text-secondary: var(--accent);
+  --text-secondary: var(--color-accent, #f1faee);
   --border: var(--light-grey);
 
   /* Fonts */
