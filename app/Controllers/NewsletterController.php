@@ -7,7 +7,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 class NewsletterController extends BaseController
 {
     private const TIMEOUT_SECONDS = 10;
-    private const NEWSLETTER_ACTION = 'newsletter_subscription';
 
     public function subscribe(): ResponseInterface
     {
@@ -21,8 +20,8 @@ class NewsletterController extends BaseController
 
         $payload = $this->extractPayload();
 
-        if (!$this->validatePayload($payload)) {
-            return $this->errorResponse('Invalid request data', 400);
+        if (!$this->isValidPayload($payload)) {
+            return $this->errorResponse('Invalid email or reCAPTCHA token', 400);
         }
 
         $response = $this->callExternalApi($apiBase, $siteId, $apiKey, $payload);
@@ -33,15 +32,19 @@ class NewsletterController extends BaseController
     private function extractPayload(): array
     {
         return [
-            'email' => $this->request->getPost('email') ?? '',
+            'email' => sanitize_email($this->request->getPost('email') ?? ''),
             'recaptcha_token' => $this->request->getPost('recaptcha_token') ?? '',
             'invitation_code' => $this->request->getPost('invitation_code') ?? '',
         ];
     }
 
-    private function validatePayload(array $payload): bool
+    private function isValidPayload(array $payload): bool
     {
-        return !empty($payload['email']) && !empty($payload['recaptcha_token']);
+        $hasValidEmail = !empty($payload['email']) && validate_email($payload['email']);
+        $hasValidToken = !empty($payload['recaptcha_token']) && validate_recaptcha_token($payload['recaptcha_token']);
+        $hasValidCode = validate_invitation_code($payload['invitation_code']);
+
+        return $hasValidEmail && $hasValidToken && $hasValidCode;
     }
 
     private function callExternalApi(string $apiBase, string $siteId, string $apiKey, array $payload): ResponseInterface
