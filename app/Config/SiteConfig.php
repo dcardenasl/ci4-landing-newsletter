@@ -18,11 +18,12 @@ class SiteConfig extends BaseConfig
      * Color Palette (injected as CSS custom properties)
      * Used in :root CSS variables for theme customization
      */
-    public string $colorPrimary = '#2563eb';
-    public string $colorSecondary = '#64748b';
-    public string $colorAccent = '#f0f9ff';
-    public string $colorBgAlt = '#f8fafc';
-    public string $colorBgAccent = '#0f172a';
+    public string $colorPrimary       = '#F59E0B'; // CTA / botones / highlights de marca
+    public string $colorSecondary     = '#6366F1'; // Elementos secundarios de UI
+    public string $colorAccent        = '#FEF3C7'; // Superficie decorativa (puede ser cualquier tono)
+    public string $colorTextHighlight = '#92400E'; // Énfasis de texto sobre fondo claro — REQUIERE contraste alto
+    public string $colorBgAlt         = '#FAFAF9'; // Secciones alternadas claras
+    public string $colorBgAccent      = '#18181B'; // Secciones oscuras (footer, etc.)
 
     /**
      * Images (filenames in /public/images/landing/)
@@ -49,11 +50,12 @@ class SiteConfig extends BaseConfig
         $this->logoPath = env('siteConfig.logoPath', $this->logoPath);
         $this->logoWhitePath = env('siteConfig.logoWhitePath', $this->logoWhitePath);
 
-        $this->colorPrimary = env('siteConfig.colorPrimary', $this->colorPrimary);
-        $this->colorSecondary = env('siteConfig.colorSecondary', $this->colorSecondary);
-        $this->colorAccent = env('siteConfig.colorAccent', $this->colorAccent);
-        $this->colorBgAlt = env('siteConfig.colorBgAlt', $this->colorBgAlt);
-        $this->colorBgAccent = env('siteConfig.colorBgAccent', $this->colorBgAccent);
+        $this->colorPrimary       = env('siteConfig.colorPrimary',       $this->colorPrimary);
+        $this->colorSecondary     = env('siteConfig.colorSecondary',     $this->colorSecondary);
+        $this->colorAccent        = env('siteConfig.colorAccent',        $this->colorAccent);
+        $this->colorTextHighlight = env('siteConfig.colorTextHighlight', $this->colorTextHighlight);
+        $this->colorBgAlt         = env('siteConfig.colorBgAlt',         $this->colorBgAlt);
+        $this->colorBgAccent      = env('siteConfig.colorBgAccent',      $this->colorBgAccent);
 
         $this->imageHero = env('siteConfig.imageHero', $this->imageHero);
         $this->imageFaq = env('siteConfig.imageFaq', $this->imageFaq);
