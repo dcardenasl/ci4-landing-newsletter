@@ -49,48 +49,48 @@ return [
             [
                 'question' => '¿Quién puede beneficiarse de Filma?',
                 'answer' => [
-                    'Filma está diseñado para toda la cadena de valor del audiovisual:',
+                    'intro' => 'Filma está diseñado para toda la cadena de valor del audiovisual:',
                     'benefits' => [
                         'Directores y productores buscando equipos especializados',
                         'Técnicos y creativos que quieren expandir su red profesional',
                         'Empresas de producción que necesitan talento confiable',
                         'Freelancers que buscan oportunidades de crecimiento'
                     ],
-                    'Si trabajas en audiovisual, Filma es tu espacio para crecer profesionalmente.'
+                    'outro' => 'Si trabajas en audiovisual, Filma es tu espacio para crecer profesionalmente.'
                 ]
             ],
             [
                 'question' => '¿Por qué crear un perfil en Filma?',
                 'answer' => [
-                    'Tu perfil en Filma es tu carta de presentación al mundo audiovisual:',
+                    'intro' => 'Tu perfil en Filma es tu carta de presentación al mundo audiovisual:',
                     'benefits' => [
                         'Showcase profesional que destaca tu mejor trabajo',
                         'Networking auténtico con líderes de la industria',
                         'Visibilidad 24/7 ante productores y directores',
                         'Herramientas para gestionar y hacer crecer tu carrera'
                     ],
-                    'Además, es completamente gratuito y te posiciona como profesional serio en el mercado.'
+                    'outro' => 'Además, es completamente gratuito y te posiciona como profesional serio en el mercado.'
                 ]
             ],
             [
                 'question' => '¿Dónde está disponible Filma?',
                 'answer' => [
-                    'Filma opera en un principio a nivel nacional con visión global.',
-                    'Comenzamos fortaleciendo la industria audiovisual local, conectando talento de todo el país. Nuestra plataforma web funciona desde cualquier dispositivo, permitiéndote gestionar tu carrera desde donde estés.',
-                    'Pronto expandiremos nuestro alcance internacional para conectar el talento local con oportunidades globales.'
+                    'intro' => 'Filma opera en un principio a nivel nacional con visión global. Comenzamos fortaleciendo la industria audiovisual local, conectando talento de todo el país. Nuestra plataforma web funciona desde cualquier dispositivo, permitiéndote gestionar tu carrera desde donde estés.',
+                    'benefits' => [],
+                    'outro' => 'Pronto expandiremos nuestro alcance internacional para conectar el talento local con oportunidades globales.'
                 ]
             ],
             [
                 'question' => '¿Cuál es la misión de Filma?',
                 'answer' => [
-                    'Nuestra misión es democratizar y profesionalizar la industria audiovisual.',
-                    'Creemos que el talento debe ser descubierto sin barreras. Por eso construimos una plataforma que:',
+                    'intro' => 'Nuestra misión es democratizar y profesionalizar la industria audiovisual. Creemos que el talento debe ser descubierto sin barreras. Por eso construimos una plataforma que:',
                     'benefits' => [
                         'Transparenta tarifas y condiciones laborales',
                         'Facilita conexiones profesionales auténticas',
                         'Eleva los estándares de calidad de la industria',
                         'Crea oportunidades reales de crecimiento para todos los profesionales'
-                    ]
+                    ],
+                    'outro' => ''
                 ]
             ]
         ]

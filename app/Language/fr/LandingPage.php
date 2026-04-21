@@ -50,35 +50,38 @@ return [
             [
                 'question' => 'À qui s\'adresse Filma ?',
                 'answer' => [
-                    'Filma s\'adresse aux professionnels du secteur audiovisuel, incluant les réalisateurs, producteurs, techniciens et toute personne impliquée dans la création de contenus audiovisuels.',
-                    'Notre plateforme facilite la connexion entre ces professionnels, leur permettant de trouver l\'équipe spécialisée, de gérer des projets et d\'accéder à des services de haute qualité.'
+                    'intro' => 'Filma s\'adresse aux professionnels du secteur audiovisuel, incluant les réalisateurs, producteurs, techniciens et toute personne impliquée dans la création de contenus audiovisuels.',
+                    'benefits' => [],
+                    'outro' => 'Notre plateforme facilite la connexion entre ces professionnels, leur permettant de trouver l\'équipe spécialisée, de gérer des projets et d\'accéder à des services de haute qualité.'
                 ]
             ],
             [
                 'question' => 'Quelle est la valeur de créer un profil ?',
                 'answer' => [
-                    'Créer un profil sur Filma est entièrement gratuit et vous permet de :',
+                    'intro' => 'Créer un profil sur Filma est entièrement gratuit et vous permet de :',
                     'benefits' => [
                         'Présenter votre portfolio et votre expérience professionnelle',
                         'Vous connecter avec d\'autres professionnels du secteur',
                         'Accéder aux opportunités de travail et projets',
                         'Recevoir des notifications sur les nouvelles offres et services'
                     ],
-                    'De plus, en ayant un profil complet, vous augmentez vos chances d\'être trouvé par des producteurs et réalisateurs qui cherchent des talents spécialisés.'
+                    'outro' => 'De plus, en ayant un profil complet, vous augmentez vos chances d\'être trouvé par des producteurs et réalisateurs qui cherchent des talents spécialisés.'
                 ]
             ],
             [
                 'question' => 'Où fonctionne FILMA ?',
                 'answer' => [
-                    'Filma est conçu pour fonctionner sur tout le territoire national, permettant aux professionnels de l\'audiovisuel de se connecter et collaborer quelle que soit leur localisation.',
-                    'Notre plateforme est accessible depuis n\'importe quel appareil avec une connexion internet, facilitant la recherche d\'équipes et de services dans n\'importe quelle partie du pays.'
+                    'intro' => 'Filma est conçu pour fonctionner sur tout le territoire national, permettant aux professionnels de l\'audiovisuel de se connecter et collaborer quelle que soit leur localisation.',
+                    'benefits' => [],
+                    'outro' => 'Notre plateforme est accessible depuis n\'importe quel appareil avec une connexion internet, facilitant la recherche d\'équipes et de services dans n\'importe quelle partie du pays.'
                 ]
             ],
             [
                 'question' => 'Quel est l\'objectif de FILMA ?',
                 'answer' => [
-                    'L\'objectif de Filma est d\'être la plateforme leader dans l\'industrie audiovisuelle, facilitant la connexion entre professionnels, équipes et services cinématographiques.',
-                    'Nous cherchons à révolutionner l\'industrie et professionnaliser le secteur, en rendant transparents les tarifs par journée et en offrant un espace sûr et fiable pour tous ceux impliqués dans la production audiovisuelle.'
+                    'intro' => 'L\'objectif de Filma est d\'être la plateforme leader dans l\'industrie audiovisuelle, facilitant la connexion entre professionnels, équipes et services cinématographiques.',
+                    'benefits' => [],
+                    'outro' => 'Nous cherchons à révolutionner l\'industrie et professionnaliser le secteur, en rendant transparents les tarifs par journée et en offrant un espace sûr et fiable pour tous ceux impliqués dans la production audiovisuelle.'
                 ]
             ]
         ]

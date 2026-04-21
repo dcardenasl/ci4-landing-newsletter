@@ -50,35 +50,38 @@ return [
             [
                 'question' => 'Para quem é direcionado o Filma?',
                 'answer' => [
-                    'O Filma é direcionado a profissionais do setor audiovisual, incluindo diretores, produtores, técnicos e qualquer pessoa envolvida na criação de conteúdos audiovisuais.',
-                    'Nossa plataforma facilita a conexão entre esses profissionais, permitindo que encontrem a equipe especializada, gerenciem projetos e acessem serviços de alta qualidade.'
+                    'intro' => 'O Filma é direcionado a profissionais do setor audiovisual, incluindo diretores, produtores, técnicos e qualquer pessoa envolvida na criação de conteúdos audiovisuais.',
+                    'benefits' => [],
+                    'outro' => 'Nossa plataforma facilita a conexão entre esses profissionais, permitindo que encontrem a equipe especializada, gerenciem projetos e acessem serviços de alta qualidade.'
                 ]
             ],
             [
                 'question' => 'Qual é o valor de criar um perfil?',
                 'answer' => [
-                    'Criar um perfil no Filma é completamente gratuito e permite que você:',
+                    'intro' => 'Criar um perfil no Filma é completamente gratuito e permite que você:',
                     'benefits' => [
                         'Mostre seu portfólio e experiência profissional',
                         'Conecte-se com outros profissionais do setor',
                         'Acesse oportunidades de trabalho e projetos',
                         'Receba notificações sobre novas ofertas e serviços'
                     ],
-                    'Além disso, ao ter um perfil completo, você aumenta suas chances de ser encontrado por produtores e diretores que buscam talento especializado.'
+                    'outro' => 'Além disso, ao ter um perfil completo, você aumenta suas chances de ser encontrado por produtores e diretores que buscam talento especializado.'
                 ]
             ],
             [
                 'question' => 'Onde funciona o FILMA?',
                 'answer' => [
-                    'O Filma é projetado para funcionar em todo o território nacional, permitindo que os profissionais do audiovisual se conectem e colaborem independentemente de sua localização.',
-                    'Nossa plataforma é acessível de qualquer dispositivo com conexão à internet, facilitando a busca por equipes e serviços em qualquer parte do país.'
+                    'intro' => 'O Filma é projetado para funcionar em todo o território nacional, permitindo que os profissionais do audiovisual se conectem e colaborem independentemente de sua localização.',
+                    'benefits' => [],
+                    'outro' => 'Nossa plataforma é acessível de qualquer dispositivo com conexão à internet, facilitando a busca por equipes e serviços em qualquer parte do país.'
                 ]
             ],
             [
                 'question' => 'Qual é o objetivo do FILMA?',
                 'answer' => [
-                    'O objetivo do Filma é ser a plataforma líder na indústria audiovisual, facilitando a conexão entre profissionais, equipes e serviços cinematográficos.',
-                    'Buscamos revolucionar a indústria e profissionalizar o setor, transparentizando os valores por jornada e oferecendo um espaço seguro e confiável para todos os envolvidos na produção audiovisual.'
+                    'intro' => 'O objetivo do Filma é ser a plataforma líder na indústria audiovisual, facilitando a conexão entre profissionais, equipes e serviços cinematográficos.',
+                    'benefits' => [],
+                    'outro' => 'Buscamos revolucionar a indústria e profissionalizar o setor, transparentizando os valores por jornada e oferecendo um espaço seguro e confiável para todos os envolvidos na produção audiovisual.'
                 ]
             ]
         ]

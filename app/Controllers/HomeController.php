@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use Config\App;
 use Config\SiteConfig;
 
 class HomeController extends BaseController
 {
-    private const SUPPORTED_LOCALES = ['es', 'en', 'pt', 'it', 'fr'];
     private const DEFAULT_LOCALE = 'es';
 
     public function index(string $locale = self::DEFAULT_LOCALE): string
@@ -27,7 +27,9 @@ class HomeController extends BaseController
 
     private function validateLocale(string $locale): string
     {
-        return in_array($locale, self::SUPPORTED_LOCALES) ? $locale : self::DEFAULT_LOCALE;
+        $appConfig = config(App::class);
+        $supportedLocales = $appConfig->supportedLocales ?? [self::DEFAULT_LOCALE];
+        return in_array($locale, $supportedLocales) ? $locale : self::DEFAULT_LOCALE;
     }
 
     private function buildAppConfig(string $locale): array

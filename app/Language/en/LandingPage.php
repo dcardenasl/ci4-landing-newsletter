@@ -50,35 +50,38 @@ return [
             [
                 'question' => 'Who is Filma aimed at?',
                 'answer' => [
-                    'Filma is aimed at audiovisual industry professionals, including directors, producers, technicians and anyone involved in creating audiovisual content.',
-                    'Our platform facilitates connection between these professionals, allowing them to find specialized equipment, manage projects and access high-quality services.'
+                    'intro' => 'Filma is aimed at audiovisual industry professionals, including directors, producers, technicians and anyone involved in creating audiovisual content.',
+                    'benefits' => [],
+                    'outro' => 'Our platform facilitates connection between these professionals, allowing them to find specialized equipment, manage projects and access high-quality services.'
                 ]
             ],
             [
                 'question' => 'What value does creating a profile have?',
                 'answer' => [
-                    'Creating a profile on Filma is completely free and allows you to:',
+                    'intro' => 'Creating a profile on Filma is completely free and allows you to:',
                     'benefits' => [
                         'Showcase your portfolio and professional experience',
                         'Connect with other industry professionals',
                         'Access job opportunities and projects',
                         'Receive notifications about new offers and services'
                     ],
-                    'Additionally, by having a complete profile, you increase your chances of being found by producers and directors looking for specialized talent.'
+                    'outro' => 'Additionally, by having a complete profile, you increase your chances of being found by producers and directors looking for specialized talent.'
                 ]
             ],
             [
                 'question' => 'Where does FILMA work?',
                 'answer' => [
-                    'Filma is designed to work throughout the national territory, allowing audiovisual professionals to connect and collaborate regardless of their location.',
-                    'Our platform is accessible from any device with an internet connection, facilitating the search for equipment and services anywhere in the country.'
+                    'intro' => 'Filma is designed to work throughout the national territory, allowing audiovisual professionals to connect and collaborate regardless of their location.',
+                    'benefits' => [],
+                    'outro' => 'Our platform is accessible from any device with an internet connection, facilitating the search for equipment and services anywhere in the country.'
                 ]
             ],
             [
                 'question' => 'What is the objective of FILMA?',
                 'answer' => [
-                    'The objective of Filma is to be the leading platform in the audiovisual industry, facilitating the connection between professionals, equipment and cinematographic services.',
-                    'We seek to revolutionize the industry and professionalize the sector, making daily rates transparent and offering a safe and reliable space for everyone involved in audiovisual production.'
+                    'intro' => 'The objective of Filma is to be the leading platform in the audiovisual industry, facilitating the connection between professionals, equipment and cinematographic services.',
+                    'benefits' => [],
+                    'outro' => 'We seek to revolutionize the industry and professionalize the sector, making daily rates transparent and offering a safe and reliable space for everyone involved in audiovisual production.'
                 ]
             ]
         ]
