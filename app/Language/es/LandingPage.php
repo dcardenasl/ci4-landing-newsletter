@@ -2,105 +2,105 @@
 return [
     // META TAGS
     'meta' => [
-        'title' => 'Filma - La Red Profesional del Audiovisual | Encuentra y conecta con el mejor talento',
-        'description' => 'La plataforma que revoluciona la industria audiovisual. Conecta con profesionales, encuentra equipos especializados y potencia tus proyectos cinematográficos.',
-        'keywords' => 'red audiovisual, profesionales cine, crew finder Chile, producción cinematográfica, directores, productores, técnicos especializados, casting profesional',
-        'og_title' => 'Filma - La Red Profesional del Audiovisual',
-        'og_description' => 'Conecta con los mejores profesionales del audiovisual. Encuentra equipos especializados y lleva tus proyectos al siguiente nivel.',
-        'twitter_title' => 'Filma - La Red Profesional del Audiovisual',
-        'twitter_description' => 'La plataforma que conecta talento audiovisual con oportunidades únicas.'
+        'title' => 'NewsLanding — Plantilla de landing page de suscripción para CodeIgniter 4',
+        'description' => 'Plantilla CI4 lista para usar: landing page de suscripción con soporte multiidioma (5 locales), reCAPTCHA, Google Analytics y animaciones. Clónala, personalízala y lánzala.',
+        'keywords' => 'landing page suscripción, plantilla codeigniter 4, ci4 starter kit, landing multiidioma, plantilla newsletter',
+        'og_title' => 'NewsLanding — Plantilla de Landing Page para Suscripciones',
+        'og_description' => 'Plantilla CI4 lista para producción para landing pages de suscripción. Multiidioma, reCAPTCHA, conectada a API, totalmente responsiva.',
+        'twitter_title' => 'NewsLanding — Plantilla de Landing Page para Suscripciones',
+        'twitter_description' => 'Clónala, personalízala, lánzala. Plantilla CI4 para landing pages con 5 idiomas, animaciones e integración de API.',
     ],
 
     // HEADER
     'header' => [
-        'logo_alt' => 'Filma Logo',
-        'tagline' => 'Crew Finder'
+        'logo_alt' => 'Logo de NewsLanding',
+        'tagline' => 'Plantilla Landing',
     ],
 
     // HERO SECTION
     'hero' => [
-        'title' => '<strong>Crea tu perfil</strong> para destacar en la industria audiovisual',
-        'description' => 'Únete a la nueva red profesional del audiovisual. Conecta con oportunidades, muestra tu trabajo <strong>y haz crecer tu carrera en la industria.</strong>',
-        'newsletter_instruction' => 'Sé el primero en enterarte',
+        'title' => '<strong>Tu marca.</strong> Tu audiencia. Una sola plantilla.',
+        'description' => 'NewsLanding es una landing page de suscripción lista para producción, construida sobre CodeIgniter 4. <strong>Clónala, agrega tu contenido y lanza tu lista de espera o newsletter en minutos.</strong>',
+        'newsletter_instruction' => 'Prueba el demo en vivo — suscríbete aquí',
         'email_placeholder' => 'tu@email.com',
-        'subscribe_btn' => 'Empezar gratis',
-        'portfolio_title' => 'Portafolio Online en minutos ',
-        'visibility_title' => 'Visibilidad en la industria',
-        'search_title' => 'Nuevas oportunidades'
+        'subscribe_btn' => 'Suscribirme',
+        'portfolio_title' => 'Multiidioma',
+        'visibility_title' => 'Backend CI4',
+        'search_title' => 'Lista para API',
     ],
 
     // OPTIONS SECTION
     'options' => [
         'portfolio' => [
-            'title' => 'Construye tu presencia profesional',
-            'description' => 'Crea un perfil que destaque. <strong>Muestra tus especialidades, comparte tu mejor trabajo y posiciónate</strong> como el profesional que los productores están buscando.'
+            'title' => 'Diseñada para personalizarse',
+            'description' => 'Cada sección —hero, características, FAQ, pie de página— está controlada por archivos de idioma. <strong>Cambia el contenido en un lugar y los 5 locales se actualizan al instante.</strong> Sin tocar la lógica de la vista.',
         ],
         'search' => [
-            'title' => 'Encuentra el talento perfecto',
-            'description' => 'Descubre profesionales especializados con nuestro sistema de búsqueda inteligente. <strong>Filtra por especialidad, ubicación y disponibilidad para encontrar exactamente lo que necesitas.</strong>'
-        ]
+            'title' => 'Lista para producción',
+            'description' => 'Se conecta a tu API para gestionar suscripciones, <strong>valida con reCAPTCHA v3, soporta Google Analytics y GTM,</strong> e incluye etiquetas SEO, Open Graph y Twitter Cards desde el primer momento.',
+        ],
     ],
 
     // FAQ SECTION
     'faq' => [
-        'title' => '<strong>Tu talento</strong> merece ser descubierto',
-        'description' => 'Revolucionamos la forma de conectar y colaborar en el mundo audiovisual. Filma es tu aliado estratégico.',
+        'title' => 'Todo lo que<br>necesitas para <strong>lanzar<br>tu landing</strong>',
+        'description' => 'NewsLanding es autodocumentada — esta misma página es una demostración en vivo de cómo luce la plantilla.',
         'questions' => [
             [
-                'question' => '¿Quién puede beneficiarse de Filma?',
+                'question' => '¿Qué es NewsLanding?',
                 'answer' => [
-                    'intro' => 'Filma está diseñado para toda la cadena de valor del audiovisual:',
+                    'intro' => 'NewsLanding es una plantilla starter de CodeIgniter 4 para landing pages de suscripción. Incluye:',
                     'benefits' => [
-                        'Directores y productores buscando equipos especializados',
-                        'Técnicos y creativos que quieren expandir su red profesional',
-                        'Empresas de producción que necesitan talento confiable',
-                        'Freelancers que buscan oportunidades de crecimiento'
+                        'Landing page responsiva y animada con hero, características, FAQ y pie de página',
+                        'Soporte multiidioma con 5 locales: inglés, español, francés, italiano y portugués',
+                        'Formulario de suscripción conectado a tu propio endpoint de API',
+                        'Integración con reCAPTCHA v3, Google Analytics 4 y Google Tag Manager',
                     ],
-                    'outro' => 'Si trabajas en audiovisual, Filma es tu espacio para crecer profesionalmente.'
-                ]
+                    'outro' => 'Clona el repositorio, actualiza los archivos de idioma con tu contenido, configura tu env y ya estás en línea.',
+                ],
             ],
             [
-                'question' => '¿Por qué crear un perfil en Filma?',
+                'question' => '¿Cómo la personalizo para mi producto?',
                 'answer' => [
-                    'intro' => 'Tu perfil en Filma es tu carta de presentación al mundo audiovisual:',
+                    'intro' => 'La personalización es directa y no requiere tocar la lógica de las vistas:',
                     'benefits' => [
-                        'Showcase profesional que destaca tu mejor trabajo',
-                        'Networking auténtico con líderes de la industria',
-                        'Visibilidad 24/7 ante productores y directores',
-                        'Herramientas para gestionar y hacer crecer tu carrera'
+                        'Edita app/Language/{locale}/LandingPage.php para cambiar todo el contenido visible',
+                        'Reemplaza las imágenes en public/images/landing/ y los logos en public/images/logos/',
+                        'Actualiza los colores y el nombre del sitio en app/Config/SiteConfig.php',
+                        'Apunta el API_BASE_URL en env a tu propio backend de suscripciones',
                     ],
-                    'outro' => 'Además, es completamente gratuito y te posiciona como profesional serio en el mercado.'
-                ]
+                    'outro' => 'La plantilla está estructurada para que el contenido y la presentación estén completamente separados.',
+                ],
             ],
             [
-                'question' => '¿Dónde está disponible Filma?',
+                'question' => '¿Qué idiomas están incluidos?',
                 'answer' => [
-                    'intro' => 'Filma opera en un principio a nivel nacional con visión global. Comenzamos fortaleciendo la industria audiovisual local, conectando talento de todo el país. Nuestra plataforma web funciona desde cualquier dispositivo, permitiéndote gestionar tu carrera desde donde estés.',
+                    'intro' => 'La plantilla incluye cinco archivos de locale completamente traducidos: inglés (en), español (es), francés (fr), italiano (it) y portugués (pt).',
                     'benefits' => [],
-                    'outro' => 'Pronto expandiremos nuestro alcance internacional para conectar el talento local con oportunidades globales.'
-                ]
+                    'outro' => 'El selector de idioma está controlado por la configuración de locales soportados en app/Config/App.php. Cada locale es accesible en su propia ruta URL: /en, /es, /fr, /it, /pt.',
+                ],
             ],
             [
-                'question' => '¿Cuál es la misión de Filma?',
+                'question' => '¿Qué hace el formulario de suscripción?',
                 'answer' => [
-                    'intro' => 'Nuestra misión es democratizar y profesionalizar la industria audiovisual. Creemos que el talento debe ser descubierto sin barreras. Por eso construimos una plataforma que:',
+                    'intro' => 'El formulario recopila un email, lo valida en cliente y servidor, y lo envía a tu endpoint de API configurado. Gestiona emails duplicados, direcciones inválidas y fallos de reCAPTCHA con mensajes localizados.',
                     'benefits' => [
-                        'Transparenta tarifas y condiciones laborales',
-                        'Facilita conexiones profesionales auténticas',
-                        'Eleva los estándares de calidad de la industria',
-                        'Crea oportunidades reales de crecimiento para todos los profesionales'
+                        'Token reCAPTCHA v3 generado de forma invisible al enviar',
+                        'Detección de email duplicado con mensaje amigable',
+                        'Email de bienvenida enviado desde tu API (SMTP vive en el servidor)',
+                        'Todos los mensajes de retroalimentación están localizados según el idioma activo',
                     ],
-                    'outro' => ''
-                ]
-            ]
-        ]
+                    'outro' => '',
+                ],
+            ],
+        ],
     ],
 
     // FOOTER
     'footer' => [
-        'newsletter_text' => 'Únete al acceso temprano y descubre Filma antes que nadie.',
+        'newsletter_text' => '¿Te gusta esta plantilla? Suscríbete para recibir actualizaciones cuando salgan nuevas versiones.',
         'email_placeholder' => 'tu@email.com',
-        'subscribe_btn' => 'Únete ahora',
-        'copyright' => '© 2025 Filma. Conectando el futuro audiovisual.'
+        'subscribe_btn' => 'Suscribirme',
+        'copyright' => '© 2026 NewsLanding. Una plantilla de landing page de suscripción en CodeIgniter 4.',
     ]
 ];

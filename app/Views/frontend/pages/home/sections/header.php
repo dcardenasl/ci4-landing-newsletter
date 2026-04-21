@@ -29,7 +29,9 @@
         </div>
         <div class="row logo_container">
             <div class="col pe-0">
-                <img src="/<?= $siteConfig->logoPath ?>" alt="<?= lang('LandingPage.header.logo_alt') ?>" class="img-fluid image-logo " />
+                <span class="brand-text-logo fw-bold" style="font-family:'Poppins',sans-serif; font-size:1.5rem; color:#111;">
+                    <?= esc($siteConfig->siteName) ?>
+                </span>
             </div>
             <div class="col">
                 <p class="line-separator "><span>|</span> </p>

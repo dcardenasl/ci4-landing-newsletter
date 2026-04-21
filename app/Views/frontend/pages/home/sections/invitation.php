@@ -3,7 +3,9 @@
     <div class="container">
         <div class="row justify-content-center align-items-center text-center mb-5 ">
             <div class="col-12 scale-in delay-1">
-                <img src="/images/logos/fil-black.svg" alt="Fil Logo" class="img-fluid my-5" style="max-width: 400px; height:auto;" />
+                <p class="invitation-brand-text fw-bold my-5" style="font-family:'Poppins',sans-serif; font-size:3rem; letter-spacing:-0.03em; color:#111;">
+                    <?= esc($siteConfig->siteName) ?>
+                </p>
             </div>
             <div class="col-md-12 col-lg-6">
                 <p class="newsletter-text-instructions text-center scale-in delay-2">

@@ -9,8 +9,8 @@ class SiteConfig extends BaseConfig
     /**
      * Site Brand & Identity
      */
-    public string $siteName = 'Filma';
-    public string $siteTagline = 'Find your crew';
+    public string $siteName = 'NewsLanding';
+    public string $siteTagline = 'Subscription Landing Template';
     public string $logoPath = 'images/logos/filma-black.svg';
     public string $logoWhitePath = 'images/logos/filma-white.svg';
 
@@ -18,11 +18,11 @@ class SiteConfig extends BaseConfig
      * Color Palette (injected as CSS custom properties)
      * Used in :root CSS variables for theme customization
      */
-    public string $colorPrimary = '#e63946';
-    public string $colorSecondary = '#457b9d';
-    public string $colorAccent = '#f1faee';
-    public string $colorBgAlt = '#f8f9fa';
-    public string $colorBgAccent = '#1d3557';
+    public string $colorPrimary = '#2563eb';
+    public string $colorSecondary = '#64748b';
+    public string $colorAccent = '#f0f9ff';
+    public string $colorBgAlt = '#f8fafc';
+    public string $colorBgAccent = '#0f172a';
 
     /**
      * Images (filenames in /public/images/landing/)

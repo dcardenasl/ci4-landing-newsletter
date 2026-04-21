@@ -41,14 +41,14 @@ return [
         'code_required' => 'El campo código es requerido.',
     ],
     'emails' => [
-        'from_name' => 'Soporte FILMA',
+        'from_name' => 'NewsLanding',
         'welcome_activation' => [
-            'subject' => '¡Bienvenido(a) a la comunidad FILMA!',
-            'title' => '¡Bienvenido(a) a FILMA {name}!',
+            'subject' => '¡Bienvenid@ a NewsLanding!',
+            'title' => '¡Bienvenid@, {name}!',
             'url_activation_title' => 'Presiona aquí',
-            'preheader' => 'Bienvenid(a) a la gran comunidad FILMA donde podrás buscar y ofrecer en el mercado de Servicios Audiovisuales en un Solo Lugar',
-            'first_paragraph' => 'Te agradecemos por registrarte en FILMA y hacer crecer esta maravillosa comunidad.',
-            'second_paragraph' => 'A continuación te compartimos el enlace para activar tu cuenta y así puedas ingresar con tus datos de acceso al panel de control FILMA.',
+            'preheader' => 'Activa tu cuenta de NewsLanding para comenzar.',
+            'first_paragraph' => 'Gracias por registrarte en NewsLanding.',
+            'second_paragraph' => 'A continuación te compartimos el enlace para activar tu cuenta y acceder a tu panel de control.',
             'third_paragraph' => 'Si tienes algún problema escríbenos a {support_email} para que podamos ayudarte.',
         ],
         'change_password' => [

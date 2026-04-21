@@ -3,115 +3,105 @@
 return [
     // META TAGS
     'meta' => [
-        'title' => 'Filma - Crew Finder | Trova il team perfetto per le tue produzioni audiovisive',
-        'description' => 'Piattaforma leader per trovare crew professionali, attrezzature audiovisive e servizi cinematografici. Connettiti con registi, produttori e tecnici specializzati nella tua zona.',
-        'keywords' => 'crew finder, team audiovisivo, produzione cinematografica, registi, produttori, tecnici del cinema, servizi audiovisivi, casting crew',
-        'og_title' => 'Filma - Crew Finder | Trova il team perfetto per le tue produzioni',
-        'og_description' => 'Piattaforma leader per trovare crew professionali, attrezzature audiovisive e servizi cinematografici. Connettiti con registi, produttori e tecnici specializzati.',
-        'twitter_title' => 'Filma - Crew Finder | Trova il team perfetto per le tue produzioni',
-        'twitter_description' => 'Piattaforma leader per trovare crew professionali, attrezzature audiovisive e servizi cinematografici.'
+        'title' => 'NewsLanding — Il template di landing page per iscrizioni su CodeIgniter 4',
+        'description' => 'Un template CI4 pronto all\'uso: landing page per iscrizioni con supporto multilingue (5 locale), reCAPTCHA, Google Analytics e animazioni. Clonalo, personalizzalo, lancialo.',
+        'keywords' => 'landing page iscrizioni, template codeigniter 4, pagina newsletter, ci4 starter kit, landing multilingue, template newsletter, landing page open source',
+        'og_title' => 'NewsLanding — Template di Landing Page per Iscrizioni',
+        'og_description' => 'Template pronto per la produzione in CodeIgniter 4 per landing page newsletter. Multilingue, reCAPTCHA, connesso ad API, completamente responsive.',
+        'twitter_title' => 'NewsLanding — Template di Landing Page per Iscrizioni',
+        'twitter_description' => 'Clonalo, personalizzalo, lancialo. Template CI4 per landing page con 5 lingue, animazioni e integrazione API.',
     ],
 
     // HEADER
     'header' => [
-        'logo_alt' => 'Logo Filma',
-        'tagline' => 'Crew finder'
+        'logo_alt' => 'Logo NewsLanding',
+        'tagline' => 'Template Landing',
     ],
 
     // HERO SECTION
     'hero' => [
-        'title' => '<strong>Crea il tuo profilo</strong> come professionista dell\'audiovisivo',
-        'description' => 'Cerca, offri, compra e vendi tutto ciò che riguarda il mondo audiovisivo e cinematografico',
-        'newsletter_instruction' => 'Sii il primo a saperlo',
-        'email_placeholder' => 'Inserisci la tua email',
+        'title' => '<strong>Il tuo brand.</strong> Il tuo pubblico. Un solo template.',
+        'description' => 'NewsLanding è una landing page per iscrizioni pronta per la produzione, costruita su CodeIgniter 4. <strong>Clonala, aggiungi i tuoi contenuti e lancia la tua lista d\'attesa o newsletter in pochi minuti.</strong>',
+        'newsletter_instruction' => 'Prova la demo live — iscriviti qui',
+        'email_placeholder' => 'tua@email.com',
         'subscribe_btn' => 'Iscriviti',
-        'portfolio_title' => 'Portfolio professionale',
-        'visibility_title' => 'Visibilità Online',
-        'search_title' => 'Ricerca del team'
+        'portfolio_title' => 'Multilingue',
+        'visibility_title' => 'Backend CI4',
+        'search_title' => 'Pronto per API',
     ],
 
     // OPTIONS SECTION
     'options' => [
         'portfolio' => [
-            'title' => 'Portfolio Online',
-            'description' => 'Crea un profilo professionale, completa le tue specialità, carica i tuoi reel e offri i tuoi servizi come professionista.'
+            'title' => 'Progettato per essere personalizzato',
+            'description' => 'Ogni sezione — hero, funzionalità, FAQ, footer — è gestita da file di lingua. <strong>Modifica il testo in un posto solo e tutti e 5 i locale si aggiornano istantaneamente.</strong> Senza toccare la logica delle viste.',
         ],
         'search' => [
-            'title' => 'Ricerca di professionisti',
-            'description' => 'Utilizza il nostro motore di ricerca avanzato e filtra le tue ricerche per specialità, zona del paese e disponibilità.'
-        ]
+            'title' => 'Pronto per la produzione',
+            'description' => 'Si connette alla tua API per la gestione delle iscrizioni, <strong>valida con reCAPTCHA v3, supporta Google Analytics e GTM,</strong> e include meta tag SEO, Open Graph e Twitter Cards fin da subito.',
+        ],
     ],
 
     // FAQ SECTION
     'faq' => [
-        'title' => 'Tutto ciò di cui<br>hai bisogno<br><strong>per le tue<br>produzioni</strong>',
-        'description' => 'Attraverso la nostra piattaforma potrai pianificare, organizzare i budget e migliorare la produzione dei tuoi progetti cinematografici o audiovisivi.',
+        'title' => 'Tutto quello<br>che ti serve per <strong>lanciare<br>la tua landing</strong>',
+        'description' => 'NewsLanding è auto-documentato — questa pagina stessa è una dimostrazione live di come appare il template.',
         'questions' => [
             [
-                'question' => 'A chi è rivolto Filma?',
+                'question' => 'Che cos\'è NewsLanding?',
                 'answer' => [
-                    'intro' => 'Filma è rivolto ai professionisti del settore audiovisivo, inclusi registi, produttori, tecnici e chiunque sia coinvolto nella creazione di contenuti audiovisivi.',
-                    'benefits' => [],
-                    'outro' => 'La nostra piattaforma facilita la connessione tra questi professionisti, permettendo loro di trovare il team specializzato, gestire progetti e accedere a servizi di alta qualità.'
-                ]
-            ],
-            [
-                'question' => 'Quale valore ha creare un profilo?',
-                'answer' => [
-                    'intro' => 'Creare un profilo su Filma è completamente gratuito e ti permette di:',
+                    'intro' => 'NewsLanding è un template starter di CodeIgniter 4 per landing page di iscrizione. Include:',
                     'benefits' => [
-                        'Mostrare il tuo portfolio e la tua esperienza professionale',
-                        'Connetterti con altri professionisti del settore',
-                        'Accedere a opportunità di lavoro e progetti',
-                        'Ricevere notifiche su nuove offerte e servizi'
+                        'Landing page responsive e animata con hero, funzionalità, FAQ e footer',
+                        'Supporto multilingue con 5 locale: inglese, spagnolo, francese, italiano e portoghese',
+                        'Form di iscrizione connesso al tuo endpoint API',
+                        'Integrazione reCAPTCHA v3, Google Analytics 4 e Google Tag Manager',
                     ],
-                    'outro' => 'Inoltre, avendo un profilo completo, aumenti le tue possibilità di essere trovato da produttori e registi che cercano talenti specializzati.'
-                ]
+                    'outro' => 'Clona il repository, aggiorna i file di lingua con i tuoi contenuti, configura il tuo env e sei online.',
+                ],
             ],
             [
-                'question' => 'Dove funziona FILMA?',
+                'question' => 'Come lo personalizzo per il mio prodotto?',
                 'answer' => [
-                    'intro' => 'Filma è progettato per funzionare in tutto il territorio nazionale, permettendo ai professionisti dell\'audiovisivo di connettersi e collaborare indipendentemente dalla loro posizione.',
-                    'benefits' => [],
-                    'outro' => 'La nostra piattaforma è accessibile da qualsiasi dispositivo con connessione internet, facilitando la ricerca di team e servizi in qualsiasi parte del paese.'
-                ]
+                    'intro' => 'La personalizzazione è semplice e non richiede di toccare la logica delle viste:',
+                    'benefits' => [
+                        'Modifica app/Language/{locale}/LandingPage.php per cambiare tutti i testi visibili',
+                        'Sostituisci le immagini in public/images/landing/ e i logo in public/images/logos/',
+                        'Aggiorna i colori e il nome del sito in app/Config/SiteConfig.php',
+                        'Punta l\'API_BASE_URL in env al tuo backend di iscrizioni',
+                    ],
+                    'outro' => 'Il template è strutturato intenzionalmente in modo che contenuto e presentazione siano completamente separati.',
+                ],
             ],
             [
-                'question' => 'Qual è l\'obiettivo di FILMA?',
+                'question' => 'Quali lingue sono incluse?',
                 'answer' => [
-                    'intro' => 'L\'obiettivo di Filma è essere la piattaforma leader nell\'industria audiovisiva, facilitando la connessione tra professionisti, team e servizi cinematografici.',
+                    'intro' => 'Il template include cinque file di locale completamente tradotti: inglese (en), spagnolo (es), francese (fr), italiano (it) e portoghese (pt).',
                     'benefits' => [],
-                    'outro' => 'Cerchiamo di rivoluzionare l\'industria e professionalizzare il settore, rendendo trasparenti i valori per giornata e offrendo uno spazio sicuro e affidabile per tutti i coinvolti nella produzione audiovisiva.'
-                ]
-            ]
-        ]
-    ],
-
-    // FUTURE SECTION
-    'future' => [
-        'title' => 'Il futuro di <strong>Filma</strong>',
-        'description' => 'Filma lo creiamo tutti insieme. Ascoltiamo le tue idee e i tuoi feedback per rendere questa applicazione la piattaforma leader nell\'industria.',
-        'features' => [
-            [
-                'title' => 'Compra o affitta',
-                'description' => 'Potrai comprare o affittare attrezzature audiovisive e cinematografiche in modo sicuro e affidabile.'
+                    'outro' => 'Il selettore di lingua nell\'intestazione è gestito dalla configurazione dei locale supportati in app/Config/App.php. Ogni locale è accessibile al proprio percorso URL: /en, /es, /fr, /it, /pt.',
+                ],
             ],
             [
-                'title' => 'Profili di servizi',
-                'description' => 'Offri i tuoi servizi professionali e connettiti con produttori e registi che cercano talenti specializzati per i loro progetti.'
+                'question' => 'Cosa fa il form di iscrizione?',
+                'answer' => [
+                    'intro' => 'Il form newsletter raccoglie un indirizzo email, lo valida lato client e server, e lo invia al tuo endpoint API configurato. Gestisce email duplicate, indirizzi non validi e fallimenti di reCAPTCHA con messaggi di feedback localizzati.',
+                    'benefits' => [
+                        'Il token reCAPTCHA v3 viene generato invisibilmente all\'invio',
+                        'Il rilevamento di email duplicata restituisce un messaggio amichevole',
+                        'L\'email di benvenuto viene inviata tramite la tua API (la configurazione SMTP è lato server)',
+                        'Tutti i messaggi di feedback sono localizzati in base alla lingua attiva',
+                    ],
+                    'outro' => '',
+                ],
             ],
-            [
-                'title' => 'Mercato internazionale',
-                'description' => 'Espandi i tuoi orizzonti e connettiti con professionisti e servizi a livello internazionale, portando le tue produzioni al livello successivo.'
-            ]
-        ]
+        ],
     ],
 
     // FOOTER
     'footer' => [
-        'newsletter_text' => 'Sii il primo a sapere delle novità e degli aggiornamenti di Filma.',
-        'email_placeholder' => 'Inserisci la tua email',
+        'newsletter_text' => 'Ti piace questo template? Iscriviti per ricevere aggiornamenti quando escono nuove versioni.',
+        'email_placeholder' => 'tua@email.com',
         'subscribe_btn' => 'Iscriviti',
-        'copyright' => '© 2024 Filma. Tutti i diritti riservati.'
-    ]
+        'copyright' => '© 2026 NewsLanding. Un template di landing page per iscrizioni su CodeIgniter 4.',
+    ],
 ];

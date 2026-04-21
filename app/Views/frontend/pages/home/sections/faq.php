@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-12 col-lg-6 d-flex justify-content-center align-self-start mb-5 scale-in delay-2">
-                <img src="/images/landing/<?= $siteConfig->imageFaq ?>" alt="Filmaker" class="img-fluid option-image" style="max-width: 400px; height:auto;" />
+                <img src="/images/landing/<?= $siteConfig->imageFaq ?>" alt="Template preview" class="img-fluid option-image" style="max-width: 400px; height:auto;" />
             </div>
             <div class="col-md-12 col-lg-6 d-flex flex-column justify-content-center">
                 <h2 class="faq-title text-4xl fw-medium fade-in-up delay-1"><?= lang('LandingPage.faq.title') ?></h2>

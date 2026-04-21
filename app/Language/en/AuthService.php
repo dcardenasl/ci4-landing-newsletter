@@ -41,14 +41,14 @@ return [
         'code_required' => 'The code field is required.',
     ],
     'emails' => [
-        'from_name' => 'FILMA Support',
+        'from_name' => 'NewsLanding',
         'welcome_activation' => [
-            'subject' => 'Welcome to the FILMA community!',
-            'title' => 'Welcome to FILMA {name}!',
+            'subject' => 'Welcome to NewsLanding!',
+            'title' => 'Welcome, {name}!',
             'url_activation_title' => 'Click here',
-            'preheader' => 'Welcome to the great FILMA community where you can search and offer services in the Audiovisual Services market in one place.',
-            'first_paragraph' => 'Thank you for registering with FILMA and helping grow this wonderful community.',
-            'second_paragraph' => 'Below is the link to activate your account so you can log in with your access data to the FILMA control panel.',
+            'preheader' => 'Activate your NewsLanding account to get started.',
+            'first_paragraph' => 'Thank you for registering with NewsLanding.',
+            'second_paragraph' => 'Click the link below to activate your account and access your dashboard.',
             'third_paragraph' => 'If you have any trouble, write to us at {support_email} so we can help you.',
         ],
         'change_password' => [

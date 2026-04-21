@@ -24,14 +24,14 @@ return [
         'recaptcha_invalid' => 'Token de verificación inválido',
     ],
     'emails' => [
-        'from_name' => 'FILMA Support',
-        'user_name' => 'Usuario FILMA',
+        'from_name' => 'NewsLanding',
+        'user_name' => 'Suscriptor',
         'welcome' => [
-            'subject' => '¡Bienvenido(a) a la comunidad FILMA!',
-            'title' => '¡Bienvenido(a) a FILMA!',
-            'preheader' => 'Bienvenid(a) a la gran comunidad FILMA donde podrás buscar y ofrecer en el mercado de Servicios Audiovisuales en un Solo Lugar',
-            'first_paragraph' => 'Te agradecemos por registrarte en FILMA y hacer crecer esta maravillosa comunidad.',
-            'second_paragraph' => 'Si tienes algún problema escríbenos a {support_email} para que podamos ayudarte.',
+            'subject' => '¡Bienvenid@ a NewsLanding!',
+            'title' => '¡Bienvenid@ a NewsLanding!',
+            'preheader' => 'Te has suscrito a la demo de la plantilla NewsLanding. Te mantendremos al tanto.',
+            'first_paragraph' => 'Gracias por suscribirte a NewsLanding.',
+            'second_paragraph' => 'Si tienes algún problema, escríbenos a {support_email} y te ayudaremos.',
         ],
     ],
 ];

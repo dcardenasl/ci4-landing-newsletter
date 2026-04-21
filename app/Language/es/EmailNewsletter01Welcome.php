@@ -1,29 +1,29 @@
 <?php
 
 return [
-    'subject'       => 'Bienvenid@ a Filma Crew Finder',
+    'subject'       => 'Estás en la lista de NewsLanding',
     'meta_site'     => '<a href="{base_url}">{host}</a>',
     'meta_title'    => 'Bienvenida',
     'meta_number'   => '#01',
     'meta_date'     => '2025/07/29',
 
     'welcome_title' => 'Bienvenid@ a',
-    'highlight'     => '¡Gracias por sumarte a la revolución del networking audiovisual!',
+    'highlight'     => '¡Gracias por suscribirte — ya estás dentro!',
 
     'greeting'      => 'Hola {name}',
-    'vip_message'   => '¡Ya eres parte del Círculo VIP de <strong>filma</strong> Crew Finder!',
-    'beta_message'  => 'Pronto abriremos las puertas a nuestra <strong>beta cerrada</strong> y tú tendrás acceso <strong>antes que nadie</strong>.',
+    'vip_message'   => 'Te has suscrito a las actualizaciones de <strong>NewsLanding</strong>.',
+    'beta_message'  => 'Te mantendremos informad@ a medida que nuevas versiones, funcionalidades y guías estén disponibles.',
 
-    'features_title' => 'Con <strong>filma</strong> Crew Finder podrás:',
+    'features_title' => 'Qué incluye <strong>NewsLanding</strong>:',
     'features' => [
-        'Crear tu perfil profesional y portafolio online.',
-        'Conectar con productores, directores y técnicos en segundos.',
-        'Acceder a oportunidades que hoy no están en ningún lado.',
+        'Una landing page CI4 responsiva con hero, características, FAQ y pie de página.',
+        'Soporte multiidioma en 5 locales (en, es, fr, it, pt).',
+        'Formulario de newsletter con reCAPTCHA v3 e integración de API.',
     ],
 
-    'next_steps'   => 'En los próximos correos te contaremos <strong>cómo poder sacar el máximo provecho</strong> a tu perfil para que brille desde el día uno.',
+    'next_steps'   => 'En futuros correos compartiremos <strong>consejos para personalizar y desplegar</strong> esta plantilla en tu propio proyecto.',
 
-    'platform_desc' => 'Somos una plataforma digital que conecta a productores con profesionales del mundo audiovisual y cinematográfico.',
+    'platform_desc' => 'NewsLanding es una plantilla de landing page de suscripción en CodeIgniter 4 — clónala, personalízala, lánzala.',
 
     'button'       => '{host}',
 

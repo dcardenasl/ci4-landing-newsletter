@@ -29,7 +29,7 @@ app.baseURL = 'https://yourdomain.com'
 #--------------------------------------------------------------------
 
 # Which site is this app serving?
-SITE_ID = filma
+SITE_ID = landing-kit
 
 # External API configuration
 API_BASE_URL = https://api.yourdomain.com

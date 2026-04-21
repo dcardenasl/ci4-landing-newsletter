@@ -24,14 +24,14 @@ return [
         'recaptcha_invalid' => 'Invalid verification token',
     ],
     'emails' => [
-        'from_name' => 'FILMA Support',
-        'user_name' => 'FILMA User',
+        'from_name' => 'NewsLanding',
+        'user_name' => 'Subscriber',
         'welcome' => [
-            'subject' => 'Welcome to the FILMA community!',
-            'title' => 'Welcome to FILMA {email}!',
-            'preheader' => 'Welcome to the great FILMA community where you can search and offer audiovisual services in one place',
-            'first_paragraph' => 'Thank you for registering with FILMA and helping grow this wonderful community.',
-            'second_paragraph' => 'If you have any issues, please write to us at {support_email} so we can help you.',
+            'subject' => 'Welcome to NewsLanding!',
+            'title' => 'Welcome to NewsLanding {email}!',
+            'preheader' => 'You\'ve subscribed to the NewsLanding template demo. We\'ll keep you updated.',
+            'first_paragraph' => 'Thanks for subscribing to NewsLanding.',
+            'second_paragraph' => 'If you have any issues, write to us at {support_email} and we\'ll help you.',
         ],
     ],
 ];
