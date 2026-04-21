@@ -1,48 +1,64 @@
-/* Header Styles */
-.logo_container {
-  position: absolute;
-  top: 20px;
-  height: 54px;
+/* ==========================================================================
+   HEADER
+   Layout: [ brand | separator | tagline ]            [ language-selector ]
+   ========================================================================== */
+.header {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-2);
+}
+
+.header .container {
+  position: relative;
+}
+
+.header-bar {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 54px;
 }
 
-.image-logo {
-  max-width: 193px;
-  height: auto;
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
-.text-logo {
+.brand-logo {
   font-family: var(--font-primary);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-lg);
-  color: var(--primary-blue);
-  position: absolute;
-  width: 100%;
-  top: 30%;
-  margin: 0;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-2xl);
+  color: var(--text-heading);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.line-separator {
-  font-family: var(--font-primary);
+.brand-separator {
+  color: var(--border-strong);
   font-weight: var(--fw-light);
-  font-size: var(--fs-4xl);
-  color: var(--primary-blue);
+  font-size: var(--fs-2xl);
+  line-height: 1;
+  user-select: none;
+}
+
+.brand-tagline {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
   margin: 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.line-separator span {
-  position: absolute;
-  width: 100%;
-  top: 6%;
-}
-
-/* Language Selector Styles */
+/* ── Language selector ──────────────────────────────────────────────────── */
 .language-selector {
-  height: 100%;
-  position: absolute;
-  top: 5%;
-  /* transform: translateY(-50%); */
-  right: 3%;
+  flex-shrink: 0;
 }
 
 .language-dropdown {
@@ -50,27 +66,35 @@
 }
 
 .language-btn {
-  background-color: var(--white);
-  border: none;
-  border-radius: 25px;
-  padding: 8px 16px;
-  color: var(--text-dark);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  color: var(--text-primary);
   font-family: var(--font-primary);
   font-weight: var(--fw-medium);
-  font-size: 0.9rem;
-  display: flex;
+  font-size: var(--fs-sm);
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              border-color var(--transition-fast);
+  box-shadow: var(--shadow-sm);
   min-width: 80px;
   justify-content: center;
 }
 
 .language-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.language-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .language-btn:active {
@@ -78,12 +102,15 @@
 }
 
 .language-flag {
-  font-size: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1em;
 }
 
 .language-arrow {
   font-size: 0.7em;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
+  color: var(--text-muted);
 }
 
 .language-dropdown.open .language-arrow {
@@ -92,19 +119,22 @@
 
 .language-menu {
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% + var(--space-2));
   right: 0;
-  background-color: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  min-width: 150px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-width: 160px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-base),
+              transform var(--transition-base),
+              visibility var(--transition-base);
+  z-index: var(--z-dropdown);
   overflow: hidden;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .language-dropdown.open .language-menu {
@@ -116,85 +146,44 @@
 .language-option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-fast);
   border: none;
   background: none;
   width: 100%;
   text-align: left;
   font-family: var(--font-primary);
-  color: var(--text-dark);
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
 }
 
 .language-option:hover {
-  background-color: #f8f9fa;
+  background-color: var(--background-alt);
 }
 
 .language-option.active {
-  background-color: var(--white);
-  color: var(--text-dark);
+  background-color: var(--background-alt);
+  color: var(--text-heading);
+  font-weight: var(--fw-semibold);
 }
 
 .language-option .flag {
-  font-size: 1.1em;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .brand-separator,
+  .brand-tagline {
+    display: none;
+  }
+
   .language-btn {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--fs-xs);
     min-width: 70px;
-  }
-
-  .language-menu {
-    min-width: 130px;
-  }
-}
-
-@media (max-width: 425px) {
-  .logo_container {
-    position: absolute;
-    top: 50px;
-    height: 35px;
-  }
-
-  .image-logo {
-    max-width: 130px;
-    height: auto;
-  }
-
-  .line-separator span {
-    position: absolute;
-    width: 100%;
-    top: -12%;
-  }
-  .language-selector {
-    top: 10px;
-    right: 10px;
-  }
-
-  .text-logo {
-    width: 100%;
-    top: 25%;
-    font-size: 0.9rem;
-  }
-
-  .language-btn {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-    min-width: 60px;
-    gap: 4px;
-  }
-
-  .language-menu {
-    min-width: 120px;
-  }
-
-  .language-option {
-    padding: 10px 12px;
-    gap: 8px;
   }
 }

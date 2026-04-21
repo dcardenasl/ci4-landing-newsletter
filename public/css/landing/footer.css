@@ -1,10 +1,38 @@
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .footer-section {
-  background-image: url("/public/images/landing/footer-bg.webp");
+  position: relative;
+  background-color: var(--background-dark);
+  background-image: linear-gradient(var(--overlay-dark), var(--overlay-dark)),
+                    url("/images/landing/footer-bg.webp");
   background-size: cover;
   background-position: center;
+  color: var(--text-on-dark);
+}
+
+.footer-section .container {
+  position: relative;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-10);
+}
+
+.footer-brand {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-3xl), 4vw, var(--fs-5xl));
+  letter-spacing: -0.02em;
+  color: var(--text-on-dark);
+  margin: 0 0 var(--space-6) 0;
+  text-align: center;
 }
 
 .footer-description {
+  font-family: var(--font-secondary);
   font-weight: var(--fw-light);
-  margin-bottom: var(--spacing-2xl);
+  font-size: var(--fs-sm);
+  color: var(--text-on-dark);
+  opacity: 0.85;
+  text-align: center;
+  margin: 0;
 }

@@ -1,4 +1,23 @@
-/* FAQ Section Styles */
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.faq-section {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+
+.faq-image {
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.faq-title {
+  color: var(--text-heading);
+  margin-bottom: var(--space-4);
+}
 
 .faq-title strong {
   font-weight: var(--fw-bold);
@@ -6,9 +25,11 @@
 }
 
 .faq-description {
+  color: var(--text-primary);
   margin-bottom: var(--space-8);
 }
 
+/* ── Accordion ──────────────────────────────────────────────────────────── */
 .accordion {
   box-shadow: none;
 }
@@ -16,7 +37,8 @@
 .accordion-item {
   background-color: transparent;
   border: none;
-  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
 }
 
 .accordion-item:last-of-type {
@@ -29,10 +51,12 @@
   font-family: var(--font-secondary);
   font-weight: var(--fw-medium);
   font-size: var(--fs-lg);
-  padding: var(--space-e) 0;
+  color: var(--text-heading);
+  padding: var(--space-4) 0;
   text-align: left;
   box-shadow: none;
   border-radius: 0;
+  transition: color var(--transition-fast);
 }
 
 .accordion-button:not(.collapsed) {
@@ -40,6 +64,18 @@
   box-shadow: none;
   color: var(--text-secondary);
   font-weight: var(--fw-semibold);
+  border-bottom: 1px solid transparent;
+}
+
+.accordion-button:hover {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+.accordion-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+  border-radius: var(--radius-sm);
 }
 
 .accordion-button::after {
@@ -48,7 +84,6 @@
 
 .accordion-button::before {
   content: "";
-  /* SVG más grueso para el icono + */
   mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' stroke='black' stroke-width='1' d='M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z'/%3e%3c/svg%3e");
   -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' stroke='black' stroke-width='1' d='M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z'/%3e%3c/svg%3e");
   mask-repeat: no-repeat;
@@ -60,38 +95,30 @@
   background-color: var(--text-primary);
   width: 1rem;
   height: 1rem;
-  margin-right: var(--space-2);
+  margin-right: var(--space-3);
   flex-shrink: 0;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-fast);
 }
 
-.accordion-button:not(.collapsed)::before {
-  /* SVG más grueso para el icono - */
+.accordion-button:not(.collapsed)::before,
+.accordion-button:hover::before {
   mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' stroke='black' stroke-width='1' d='M1.5 8a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1-.5-.5z'/%3e%3c/svg%3e");
   -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' stroke='black' stroke-width='1' d='M1.5 8a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1-.5-.5z'/%3e%3c/svg%3e");
   background-color: var(--text-secondary);
 }
 
-.accordion-button:hover::before {
-  background-color: var(--text-secondary);
-}
-
-.accordion-button:hover {
-  background-color: transparent;
-  color: var(--text-secondary);
-}
-
-.accordion-button:focus {
-  box-shadow: none;
-  border-color: transparent;
+.accordion-button:hover:not(.collapsed)::before {
+  /* keep minus icon when already expanded and hovered */
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' stroke='black' stroke-width='1' d='M1.5 8a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1-.5-.5z'/%3e%3c/svg%3e");
 }
 
 .accordion-body {
-  padding: var(--space-2) 0 var(--space-4) 0;
+  padding: var(--space-2) 0 var(--space-5) 0;
   background-color: transparent;
   font-family: var(--font-secondary);
   font-weight: var(--fw-light);
-  line-height: 1.4;
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
 }
 
 .service-list {
@@ -101,21 +128,18 @@
 }
 
 .service-list li {
-  padding: var(--space-2) 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-6);
   position: relative;
-  padding-left: var(--space-6);
 }
 
 .service-list li::before {
   content: "•";
   position: absolute;
   left: 0;
+  color: var(--text-secondary);
+  font-weight: var(--fw-bold);
 }
 
 .accordion-header h2 {
   margin: 0;
-}
-
-.accordion-button:not(.collapsed) {
-  border-bottom: 1px solid transparent;
 }
