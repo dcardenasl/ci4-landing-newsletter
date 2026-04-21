@@ -1,0 +1,29 @@
+# CodeIgniter
+/writable/
+.env
+.env.local
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+/vendor/
+composer.lock
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.cache
+
+# Testing
+/tests/coverage/
