@@ -1,69 +1,106 @@
-# CodeIgniter 4 Application Starter
+# Landing Newsletter CI4
 
-## What is CodeIgniter?
+A minimal CodeIgniter 4 application that serves as a front-end only layer for a multi-tenant newsletter landing page system.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Architecture
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Browser → landing-newsletter-ci4 (CI4 SSR) → External API (multi-tenant backend)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Quick Start
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+1. Clone the repository
+2. Copy `.env.example` to `.env` and configure:
+   - `app.baseURL`: Your domain
+   - `SITE_ID`: Unique identifier for this site
+   - `API_BASE_URL`: External API endpoint
+   - `API_KEY`: API authentication key
+   - `RECAPTCHA_SITE_KEY`: Google reCAPTCHA v3 public key
 
-## Installation & updates
+3. Install dependencies:
+   ```bash
+   composer install
+   ```
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+4. Start development server:
+   ```bash
+   php spark serve
+   ```
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+5. Open http://localhost:8080
 
-## Setup
+## Features
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+- 5 language support (ES, EN, PT, IT, FR)
+- Newsletter subscription form
+- reCAPTCHA v3 integration
+- API proxy pattern (stateless)
+- Responsive design
+- SEO optimized
 
-## Important Change with index.php
+## File Structure
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+```
+app/
+├── Controllers/
+│   ├── HomeController.php       (Landing page rendering)
+│   └── NewsletterController.php (API proxy)
+├── Helpers/
+│   ├── language_helper.php
+│   └── recaptcha_helper.php
+└── Language/
+    └── (5 locales)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+public/
+├── css/landing/    (Styling)
+├── js/landing/     (Frontend logic)
+└── images/         (Assets)
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Environment Variables
 
-## Repository Management
+| Variable | Purpose |
+|----------|---------|
+| `SITE_ID` | Identifies which site this app serves |
+| `API_BASE_URL` | External API endpoint |
+| `API_KEY` | API authentication |
+| `RECAPTCHA_SITE_KEY` | reCAPTCHA public key |
+| `GA4_ID` | Google Analytics ID (optional) |
+| `GTM_ID` | Google Tag Manager ID (optional) |
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## API Integration
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+The app proxies newsletter subscriptions to the external API:
 
-## Server Requirements
+```
+POST /{locale}/api/newsletter/subscribe
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+Headers:
+  X-Site-Id: {SITE_ID}
+  X-Api-Key: {API_KEY}
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Body:
+  {
+    "email": "user@example.com",
+    "recaptcha_token": "...",
+    "invitation_code": "optional"
+  }
+```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+## Development
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+- **Language**: PHP 8.2+
+- **Framework**: CodeIgniter 4.7
+- **Frontend**: Bootstrap 5, Vanilla JS
+- **No database required** - stateless architecture
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## Production Deployment
+
+1. Set `CI_ENVIRONMENT = production` in `.env`
+2. Configure `app.baseURL` with your domain
+3. Ensure all environment variables are set
+4. Test newsletter form integration with live API
+5. Deploy via Git or FTP
+
+---
+
+Built with CodeIgniter 4
