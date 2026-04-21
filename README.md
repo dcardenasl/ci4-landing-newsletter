@@ -8,18 +8,30 @@ Browser → landing-newsletter-ci4 (CI4 SSR) → External API (multi-tenant back
 
 ## Quick Start
 
-1. Clone the repository
-2. Copy `.env.example` to `.env` and configure:
-   - `app.baseURL`: Your domain
-   - `SITE_ID`: Unique identifier for this site
+### Option 1: Automated Setup (Recommended)
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd landing-newsletter-ci4
+   ```
+
+2. Run the setup script:
+   ```bash
+   ./scripts/setup.sh
+   ```
+   
+   The script will:
+   - Prompt for your project name
+   - Auto-customize all template files
+   - Update SITE_ID and branding
+   - Install dependencies
+   - Create necessary directories
+
+3. Configure your API settings in `.env`:
    - `API_BASE_URL`: External API endpoint
    - `API_KEY`: API authentication key
    - `RECAPTCHA_SITE_KEY`: Google reCAPTCHA v3 public key
-
-3. Install dependencies:
-   ```bash
-   composer install
-   ```
 
 4. Start development server:
    ```bash
@@ -27,6 +39,53 @@ Browser → landing-newsletter-ci4 (CI4 SSR) → External API (multi-tenant back
    ```
 
 5. Open http://localhost:8080
+
+### Option 2: Manual Setup
+
+1. Clone and navigate to the repository
+2. Copy `.env.example` to `.env`
+3. Edit `.env` with your configuration
+4. Run `composer install`
+5. Run `php spark serve`
+
+## Setup Script Usage
+
+The `./scripts/setup.sh` script automates the entire setup and customization process:
+
+```bash
+# Interactive mode (prompts for project name)
+./scripts/setup.sh
+
+# Argument mode (provide project name directly)
+./scripts/setup.sh "My Awesome Project"
+
+# Skip automatic git commit
+./scripts/setup.sh "My Project" --skip-commit
+
+# Force git commit without prompting
+./scripts/setup.sh "My Project" --commit
+```
+
+### What the script does:
+
+1. **Validates environment** - Checks for Composer and Git
+2. **Generates project identity** - Creates SITE_ID from project name (e.g., "My Project" → "my-project")
+3. **Customizes all files**:
+   - Updates project name in all 5 language files (ES, EN, PT, IT, FR)
+   - Updates SITE_ID in configuration files
+   - Updates siteName in `.env` and `SiteConfig.php`
+   - Updates web manifest metadata
+   - Updates copyright year to current year
+4. **Installs dependencies** - Runs `composer install`
+5. **Sets up directories** - Creates writable directories for logs/cache
+6. **Optional git commit** - Creates a commit with all customization changes
+
+### Project name validation:
+
+- Must be 2-50 characters long
+- Cannot contain "NewsLanding" or "newslanding"
+- Special characters are automatically removed for SITE_ID generation
+- Supports multi-word names: "Bodas y Matrimonios" → "bodas-y-matrimonios"
 
 ## Features
 
