@@ -120,30 +120,45 @@ Request to `GET /` renders 3 partials instead of 6. No code change.
 ```html
 <style>
   :root {
-    --color-primary:    #e63946;      /* from $siteConfig->colorPrimary */
-    --color-secondary:  #457b9d;      /* from $siteConfig->colorSecondary */
-    --color-accent:     #f1faee;
-    --color-bg-alt:     #f8f9fa;
-    --color-bg-accent:  #1d3557;
+    --color-primary:        #e63946;  /* from $siteConfig->colorPrimary */
+    --color-secondary:      #457b9d;
+    --color-accent:         #f1faee;
+    --color-text-highlight: #1d3557;
+    --color-bg-alt:         #f8f9fa;
+    --color-bg-accent:      #1d3557;
   }
 </style>
 ```
 
-**Base CSS** (`public/css/landing/base_v2.css`) maps brand colors to semantic colors:
+#### Token semantics (important!)
+
+Cada slot tiene un rol definido — no mezclarlos:
+
+| Token               | Rol                                            | Contraste requerido      |
+|---------------------|------------------------------------------------|--------------------------|
+| `colorPrimary`      | CTA, botones, highlights de marca              | debe funcionar como bg con texto blanco encima |
+| `colorSecondary`    | Elementos secundarios de UI                    | libre                    |
+| `colorAccent`       | Superficie decorativa (bg de tarjetas, borders)| libre (puede ser pálido) |
+| `colorTextHighlight`| Énfasis de texto sobre fondo claro (`<strong>`, FAQ activo) | **AA mínimo (4.5:1 sobre blanco)** |
+| `colorBgAlt`        | Fondo de secciones alternadas claras           | pálido                   |
+| `colorBgAccent`     | Fondo de secciones oscuras (footer)            | oscuro                   |
+
+> **Error común:** usar el mismo valor para `colorAccent` y `colorTextHighlight`. Son roles distintos. El accent puede ser cualquier tono decorativo; el text-highlight debe ser oscuro para leerse.
+
+**Base CSS** (`public/css/landing/base.css`) mapea a tokens semánticos:
 ```css
 :root {
-  --primary:        var(--color-primary, #e63946);    /* fallback */
-  --secondary:      var(--color-secondary, #457b9d);
-  --accent:         var(--color-bg-accent, #1d3557);
-  --background-alt: var(--color-bg-alt, #f8f9fa);
-  /* ... */
-}
+  --primary:        var(--color-primary,        #F59E0B);
+  --secondary:      var(--color-secondary,      #6366F1);
+  --accent:         var(--color-accent,         #FEF3C7);
+  --text-highlight: var(--color-text-highlight, #92400E);
 
-.bg-primary      { background-color: var(--primary); }
-.bg-accent       { background-color: var(--accent); }
+  --text-secondary: var(--text-highlight);                        /* énfasis */
+  --primary-hover:  color-mix(in srgb, var(--primary) 82%, black); /* auto   */
+}
 ```
 
-**Advantage:** Change `siteConfig.colorPrimary = "#ff6b6b"` in `.env` → all `.bg-primary` elements turn red instantly. No CSS rebuild or file editing.
+**Ventaja:** cambiar `siteConfig.colorPrimary = "#ff6b6b"` en `.env` → todos los `.bg-primary` y los hovers de botón se adaptan. Sin rebuild.
 
 ### Per-Section CSS Files
 

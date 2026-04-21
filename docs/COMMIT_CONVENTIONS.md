@@ -103,7 +103,7 @@ git add app/Controllers/HomeController.php
 git commit -m "refactor: update HomeController to use SiteConfig"
 
 # Step 4: Update styles
-git add public/css/landing/base_v2.css
+git add public/css/landing/base.css
 git commit -m "refactor: implement CSS custom properties for dynamic theming"
 
 # Step 5: Update docs

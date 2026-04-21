@@ -78,7 +78,7 @@ landing-newsletter-ci4/
 | `app/Controllers/NewsletterController.php` | Newsletter API proxy |
 | `app/Config/Routes.php` | URL routing |
 | `public/js/landing/newsletter.js` | Form handling |
-| `public/css/landing/base_v2.css` | Main styles |
+| `public/css/landing/base.css` | Main styles |
 
 ## Development Workflow
 
@@ -204,7 +204,7 @@ return [
 ### Modify Styles
 
 CSS files are in `public/css/landing/`:
-- `base_v2.css` - Core layout
+- `base.css` - Core layout
 - `header.css` - Header styles
 - `hero.css` - Hero section
 - `form-newsletter.css` - Form styles
