@@ -35,8 +35,8 @@ class HomeController extends BaseController
     private function buildAppConfig(string $locale): array
     {
         return [
-            'siteId' => getenv('SITE_ID') ?: 'default',
-            'recaptchaSiteKey' => getenv('RECAPTCHA_SITE_KEY') ?: '',
+            'siteId'             => env('SITE_ID', 'default'),
+            'recaptchaSiteKey'   => env('RECAPTCHA_SITE_KEY', ''),
             'newsletterEndpoint' => base_url("/{$locale}/api/newsletter/subscribe"),
         ];
     }
