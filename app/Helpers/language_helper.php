@@ -4,54 +4,36 @@ use Config\App;
 
 if (!function_exists('get_supported_languages')) {
     /**
-     * Obtiene la configuración completa de idiomas soportados
-     * 
-     * @return array Array con la configuración de todos los idiomas
+     * Obtiene la configuración de idiomas activos según App::$supportedLocales.
+     * Los metadatos (flags, nombres, iso_code) son opinionados y se mantienen aquí;
+     * App::$supportedLocales es la única fuente de verdad sobre qué locales están activos.
+     *
+     * @return array<string, array{locale: string, name: string, native_name: string, flag: string, country_code: string, iso_code: string}>
      */
     function get_supported_languages(): array
     {
-        return [
-            'es' => [
-                'locale' => 'es',
-                'name' => 'Español',
-                'native_name' => 'Español',
-                'flag' => '🇨🇱',
-                'country_code' => 'CL',
-                'iso_code' => 'es-CL'
-            ],
-            'en' => [
-                'locale' => 'en',
-                'name' => 'English',
-                'native_name' => 'English',
-                'flag' => '🇺🇸',
-                'country_code' => 'US',
-                'iso_code' => 'en-US'
-            ],
-            'pt' => [
-                'locale' => 'pt',
-                'name' => 'Portuguese',
-                'native_name' => 'Português',
-                'flag' => '🇧🇷',
-                'country_code' => 'BR',
-                'iso_code' => 'pt-BR'
-            ],
-            'it' => [
-                'locale' => 'it',
-                'name' => 'Italian',
-                'native_name' => 'Italiano',
-                'flag' => '🇮🇹',
-                'country_code' => 'IT',
-                'iso_code' => 'it-IT'
-            ],
-            'fr' => [
-                'locale' => 'fr',
-                'name' => 'French',
-                'native_name' => 'Français',
-                'flag' => '🇫🇷',
-                'country_code' => 'FR',
-                'iso_code' => 'fr-FR'
-            ]
+        $meta = [
+            'es' => ['name' => 'Español',    'native_name' => 'Español',   'flag' => '🇨🇱', 'country_code' => 'CL', 'iso_code' => 'es-CL'],
+            'en' => ['name' => 'English',    'native_name' => 'English',   'flag' => '🇺🇸', 'country_code' => 'US', 'iso_code' => 'en-US'],
+            'pt' => ['name' => 'Portuguese', 'native_name' => 'Português', 'flag' => '🇧🇷', 'country_code' => 'BR', 'iso_code' => 'pt-BR'],
+            'it' => ['name' => 'Italian',    'native_name' => 'Italiano',  'flag' => '🇮🇹', 'country_code' => 'IT', 'iso_code' => 'it-IT'],
+            'fr' => ['name' => 'French',     'native_name' => 'Français',  'flag' => '🇫🇷', 'country_code' => 'FR', 'iso_code' => 'fr-FR'],
         ];
+
+        $result = [];
+        foreach (config(App::class)->supportedLocales as $locale) {
+            $result[$locale] = array_merge(
+                ['locale' => $locale],
+                $meta[$locale] ?? [
+                    'name'         => ucfirst($locale),
+                    'native_name'  => ucfirst($locale),
+                    'flag'         => '🌐',
+                    'country_code' => strtoupper($locale),
+                    'iso_code'     => $locale,
+                ]
+            );
+        }
+        return $result;
     }
 }
 
@@ -153,29 +135,6 @@ if (!function_exists('get_language_info')) {
     }
 }
 
-if (!function_exists('get_configured_languages')) {
-    /**
-     * Obtiene solo los idiomas que están configurados en la aplicación
-     * Filtra los idiomas soportados por los que están en la configuración de CI4
-     * 
-     * @return array Array con los idiomas configurados en la app
-     */
-    function get_configured_languages(): array
-    {
-        $appConfig = config(App::class);
-        $supportedLanguages = get_supported_languages();
-        $configuredLanguages = [];
-
-        foreach ($appConfig->supportedLocales as $locale) {
-            if (isset($supportedLanguages[$locale])) {
-                $configuredLanguages[$locale] = $supportedLanguages[$locale];
-            }
-        }
-
-        return $configuredLanguages;
-    }
-}
-
 if (!function_exists('get_current_url_with_locale')) {
     /**
      * Obtiene la URL actual con un idioma específico
@@ -244,7 +203,7 @@ if (!function_exists('get_language_selector_data')) {
      */
     function get_language_selector_data(string $currentLocale): array
     {
-        $configuredLanguages = get_configured_languages();
+        $configuredLanguages = get_supported_languages();
         $languages = [];
 
         foreach ($configuredLanguages as $locale => $info) {
