@@ -134,7 +134,7 @@
     <?= recaptcha_site_key_js() ?>
 
     <script src="/js/landing/bootstrap.bundle.min.js"></script>
-    <script src="/js/landing/newsletter.js?key=<?= time(); ?>"></script>
+    <script src="/js/landing/newsletter.js?v=<?= filemtime(FCPATH . 'js/landing/newsletter.js') ?>"></script>
     <script src="/js/landing/animations.js"></script>
     <script src="/js/landing/language-selector.js"></script>
 
