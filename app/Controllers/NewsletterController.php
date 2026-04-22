@@ -10,9 +10,9 @@ class NewsletterController extends BaseController
 
     public function subscribe(): ResponseInterface
     {
-        $apiBase = rtrim(getenv('API_BASE_URL'), '/');
-        $siteId = getenv('SITE_ID') ?: 'default';
-        $apiKey = getenv('API_KEY');
+        $apiBase = rtrim(env('API_BASE_URL', ''), '/');
+        $siteId  = env('SITE_ID', 'default');
+        $apiKey  = env('API_KEY', '');
 
         if (!$apiBase || !$apiKey) {
             return $this->errorResponse('API configuration is incomplete', 500);
@@ -49,34 +49,29 @@ class NewsletterController extends BaseController
 
     private function callExternalApi(string $apiBase, string $siteId, string $apiKey, array $payload): ResponseInterface
     {
-        $ch = curl_init("{$apiBase}/newsletter/subscription");
+        try {
+            $client      = service('curlrequest');
+            $apiResponse = $client->post("{$apiBase}/newsletter/subscription", [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept'       => 'application/json',
+                    'X-Site-Id'    => $siteId,
+                    'X-Api-Key'    => $apiKey,
+                ],
+                'body'        => json_encode($payload),
+                'timeout'     => self::TIMEOUT_SECONDS,
+                'http_errors' => false,
+            ]);
 
-        curl_setopt_array($ch, [
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => json_encode($payload),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => self::TIMEOUT_SECONDS,
-            CURLOPT_HTTPHEADER => [
-                'Content-Type: application/json',
-                'Accept: application/json',
-                "X-Site-Id: {$siteId}",
-                "X-Api-Key: {$apiKey}",
-            ],
-        ]);
+            return $this->response
+                ->setStatusCode($apiResponse->getStatusCode())
+                ->setContentType('application/json')
+                ->setBody($apiResponse->getBody() ?: '{}');
+        } catch (\Exception $e) {
+            log_message('error', '[Newsletter] API call failed: {message}', ['message' => $e->getMessage()]);
 
-        $response = curl_exec($ch);
-        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $curlError = curl_error($ch);
-        curl_close($ch);
-
-        if ($curlError) {
             return $this->errorResponse('Failed to reach the API', 503);
         }
-
-        return $this->response
-            ->setStatusCode($statusCode)
-            ->setContentType('application/json')
-            ->setBody($response ?? '{}');
     }
 
     private function errorResponse(string $message, int $statusCode = 500): ResponseInterface
