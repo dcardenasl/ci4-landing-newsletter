@@ -27,3 +27,4 @@ Thumbs.db
 
 # Testing
 /tests/coverage/
+/build/
