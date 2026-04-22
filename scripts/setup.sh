@@ -176,15 +176,12 @@ perform_replacements() {
     # 1. Language files - Update project name
     print_step "Updating language files (5 locales)..."
     for locale in en es fr it pt; do
-        lang_dir="app/Language/$locale"
-
-        for file in "$lang_dir"/LandingPage.php "$lang_dir"/EmailNewsletter01Welcome.php "$lang_dir"/EmailSubscriptionService.php "$lang_dir"/AuthService.php; do
-            if [ -f "$file" ]; then
-                safe_replace "$file" "NewsLanding" "$project_name"
-                safe_replace "$file" "2026" "$current_year"
-                print_success "$file"
-            fi
-        done
+        local lang_file="app/Language/$locale/LandingPage.php"
+        if [ -f "$lang_file" ]; then
+            safe_replace "$lang_file" "NewsLanding" "$project_name"
+            safe_replace "$lang_file" "2026" "$current_year"
+            print_success "$lang_file"
+        fi
     done
     echo ""
 
@@ -356,7 +353,8 @@ main() {
     echo "1. Edit .env and configure:"
     echo "   - API_BASE_URL (your subscription API endpoint)"
     echo "   - API_KEY (your API authentication key)"
-    echo "   - RECAPTCHA_SITE_KEY (from Google reCAPTCHA v3)"
+    echo "   - RECAPTCHA_SITE_KEY (public key from Google reCAPTCHA v3)"
+    echo "   - RECAPTCHA_SECRET_KEY (private key from Google reCAPTCHA v3)"
     echo "   - Optional: GA4_ID, GTM_ID for analytics"
     echo ""
     echo "2. Customize project assets:"
