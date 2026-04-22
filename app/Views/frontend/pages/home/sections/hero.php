@@ -7,22 +7,22 @@
                 <p class="hero-description font-secondary fw-light fade-in-up"><?= lang('LandingPage.hero.description') ?></p>
                 <div class="form-newsletter-container p-4 fade-in-left delay-3">
                     <p class="newsletter-text-instructions text-center"><?= lang('LandingPage.hero.newsletter_instruction') ?></p>
-                    <form id="newsletter-form" class="form-newsletter">
+                    <form class="form-newsletter" data-newsletter-form>
                         <div class="input-group">
                             <input
                                 type="email"
-                                id="email-input"
+                                name="email"
                                 class="form-control"
                                 placeholder="<?= lang('LandingPage.hero.email_placeholder') ?>"
                                 aria-label="Email"
                                 required>
                             <?= recaptcha_hidden_input() ?>
-                            <button class="btn-primary-form" type="submit" id="submit-btn">
+                            <button class="btn-primary-form" type="submit">
                                 <span class="btn-text"><?= lang('LandingPage.hero.subscribe_btn') ?></span>
                                 <div class="loading-spinner"></div>
                             </button>
                         </div>
-                        <div id="feedback-message" class="feedback-message"></div>
+                        <div class="feedback-message"></div>
                         <div class="invitation-badge"></div>
                     </form>
                 </div>

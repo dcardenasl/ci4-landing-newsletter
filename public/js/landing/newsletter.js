@@ -24,9 +24,6 @@ class Newsletter {
    */
   displayInvitationStatus() {
     if (this.invitationCode) {
-      console.log("Código de invitación detectado:", this.invitationCode);
-
-      // Opcional: Mostrar un mensaje visual al usuario
       const invitationBadge = this.form.querySelector(".invitation-badge");
       if (invitationBadge) {
         invitationBadge.textContent = `Código de invitación: ${this.invitationCode}`;
@@ -36,29 +33,26 @@ class Newsletter {
   }
 
   initializeElements() {
-    // Find elements within the specific form scope using the original IDs
-    this.emailInput = this.form.querySelector("#email-input");
-    this.submitBtn = this.form.querySelector("#submit-btn");
+    this.emailInput = this.form.querySelector('[name="email"]');
+    this.submitBtn = this.form.querySelector('[type="submit"]');
     this.btnText = this.submitBtn.querySelector(".btn-text");
     this.loadingSpinner = this.submitBtn.querySelector(".loading-spinner");
-    this.feedbackMessage = this.form.querySelector("#feedback-message");
+    this.feedbackMessage = this.form.querySelector(".feedback-message");
 
     // Create hidden input for reCAPTCHA token if it doesn't exist
-    this.recaptchaInput = this.form.querySelector("#recaptcha_token");
+    this.recaptchaInput = this.form.querySelector('[name="recaptcha_token"]');
     if (!this.recaptchaInput) {
       this.recaptchaInput = document.createElement("input");
       this.recaptchaInput.type = "hidden";
-      this.recaptchaInput.id = "recaptcha_token";
       this.recaptchaInput.name = "recaptcha_token";
       this.form.appendChild(this.recaptchaInput);
     }
 
     // Create hidden input for invitation code if it doesn't exist
-    this.invitationInput = this.form.querySelector("#invitation_code");
+    this.invitationInput = this.form.querySelector('[name="invitation_code"]');
     if (!this.invitationInput) {
       this.invitationInput = document.createElement("input");
       this.invitationInput.type = "hidden";
-      this.invitationInput.id = "invitation_code";
       this.invitationInput.name = "invitation_code";
       this.form.appendChild(this.invitationInput);
     }
@@ -170,11 +164,6 @@ class Newsletter {
       if (this.invitationCode) {
         requestData.invitation_code = this.invitationCode;
       }
-
-      console.log("Sending subscription data:", {
-        ...requestData,
-        recaptcha_token: "***hidden***", // No mostrar el token en logs
-      });
 
       // Headers for the request
       const headers = {
@@ -316,8 +305,7 @@ class Newsletter {
 
 // Initialize newsletter functionality for all forms when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all forms with ID "newsletter-form" (there might be duplicates)
-  const newsletterForms = document.querySelectorAll("#newsletter-form");
+  const newsletterForms = document.querySelectorAll("[data-newsletter-form]");
 
   // Create Newsletter instance for each form
   newsletterForms.forEach((form) => {

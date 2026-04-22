@@ -9,22 +9,22 @@
                 <p class="newsletter-text-instructions text-center scale-in delay-2">
                     <?= lang('LandingPage.footer.newsletter_text') ?>
                 </p>
-                <form id="newsletter-form" class="form-newsletter scale-in delay-3">
+                <form class="form-newsletter scale-in delay-3" data-newsletter-form>
                     <div class="input-group">
                         <input
                             type="email"
-                            id="email-input"
+                            name="email"
                             class="form-control"
                             placeholder="<?= lang('LandingPage.footer.email_placeholder') ?>"
                             aria-label="Email"
                             required>
                         <?= recaptcha_hidden_input() ?>
-                        <button class="btn-secundary-form" type="submit" id="submit-btn">
+                        <button class="btn-secundary-form" type="submit">
                             <span class="btn-text"><?= lang('LandingPage.footer.subscribe_btn') ?></span>
                             <div class="loading-spinner"></div>
                         </button>
                     </div>
-                    <div id="feedback-message" class="feedback-message"></div>
+                    <div class="feedback-message"></div>
                     <div class="invitation-badge"></div>
                 </form>
             </div>
