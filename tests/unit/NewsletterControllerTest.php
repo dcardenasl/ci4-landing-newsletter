@@ -63,15 +63,15 @@ final class NewsletterControllerTest extends CIUnitTestCase
         $result->assertStatus(400);
     }
 
-    public function testPostWithValidPayloadButMissingApiConfigReturns500(): void
+    public function testPostWithValidPayloadButMissingBffConfigReturns500(): void
     {
-        // CI4 test bootstrap reads the project .env, so API_BASE_URL may be set.
-        // We explicitly clear it here to test the missing-config branch (→ 500).
-        $prevBaseUrl = $_ENV['API_BASE_URL'] ?? null;
-        $prevApiKey  = $_ENV['API_KEY']      ?? null;
-        unset($_ENV['API_BASE_URL'], $_ENV['API_KEY'], $_SERVER['API_BASE_URL'], $_SERVER['API_KEY']);
-        putenv('API_BASE_URL');
-        putenv('API_KEY');
+        // CI4 test bootstrap reads the project .env, so BFF_URL / PROJECT_KEY may be set.
+        // We explicitly clear them here to test the missing-config branch (→ 500).
+        $prevBffUrl     = $_ENV['BFF_URL']     ?? null;
+        $prevProjectKey = $_ENV['PROJECT_KEY'] ?? null;
+        unset($_ENV['BFF_URL'], $_ENV['PROJECT_KEY'], $_SERVER['BFF_URL'], $_SERVER['PROJECT_KEY']);
+        putenv('BFF_URL');
+        putenv('PROJECT_KEY');
 
         try {
             $result = $this->call('post', $this->endpoint, [
@@ -82,13 +82,13 @@ final class NewsletterControllerTest extends CIUnitTestCase
 
             $result->assertStatus(500);
         } finally {
-            if ($prevBaseUrl !== null) {
-                $_ENV['API_BASE_URL'] = $prevBaseUrl;
-                putenv("API_BASE_URL={$prevBaseUrl}");
+            if ($prevBffUrl !== null) {
+                $_ENV['BFF_URL'] = $prevBffUrl;
+                putenv("BFF_URL={$prevBffUrl}");
             }
-            if ($prevApiKey !== null) {
-                $_ENV['API_KEY'] = $prevApiKey;
-                putenv("API_KEY={$prevApiKey}");
+            if ($prevProjectKey !== null) {
+                $_ENV['PROJECT_KEY'] = $prevProjectKey;
+                putenv("PROJECT_KEY={$prevProjectKey}");
             }
         }
     }

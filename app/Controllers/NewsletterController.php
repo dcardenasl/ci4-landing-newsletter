@@ -10,23 +10,21 @@ class NewsletterController extends BaseController
 
     public function subscribe(): ResponseInterface
     {
-        $apiBase = rtrim(env('API_BASE_URL', ''), '/');
-        $siteId  = env('SITE_ID', 'default');
-        $apiKey  = env('API_KEY', '');
+        $bffUrl     = rtrim(env('BFF_URL', ''), '/');
+        $projectKey = env('PROJECT_KEY', '');
 
-        if (!$apiBase || !$apiKey) {
-            return $this->errorResponse('API configuration is incomplete', 500);
+        if (!$bffUrl || !$projectKey) {
+            return $this->errorResponse('BFF configuration is incomplete', 500);
         }
 
-        $payload = $this->extractPayload();
+        $payload                = $this->extractPayload();
+        $payload['project_key'] = $projectKey;
 
         if (!$this->isValidPayload($payload)) {
             return $this->errorResponse('Invalid email or reCAPTCHA token', 400);
         }
 
-        $response = $this->callExternalApi($apiBase, $siteId, $apiKey, $payload);
-
-        return $response;
+        return $this->callBff($bffUrl, $payload);
     }
 
     private function extractPayload(): array
@@ -47,16 +45,14 @@ class NewsletterController extends BaseController
         return $hasValidEmail && $hasValidToken && $hasValidCode;
     }
 
-    private function callExternalApi(string $apiBase, string $siteId, string $apiKey, array $payload): ResponseInterface
+    private function callBff(string $bffUrl, array $payload): ResponseInterface
     {
         try {
             $client      = service('curlrequest');
-            $apiResponse = $client->post("{$apiBase}/newsletter/subscription", [
+            $apiResponse = $client->post("{$bffUrl}/api/v1/subscribe", [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept'       => 'application/json',
-                    'X-Site-Id'    => $siteId,
-                    'X-Api-Key'    => $apiKey,
                 ],
                 'body'        => json_encode($payload),
                 'timeout'     => self::TIMEOUT_SECONDS,
@@ -68,9 +64,9 @@ class NewsletterController extends BaseController
                 ->setContentType('application/json')
                 ->setBody($apiResponse->getBody() ?: '{}');
         } catch (\Exception $e) {
-            log_message('error', '[Newsletter] API call failed: {message}', ['message' => $e->getMessage()]);
+            log_message('error', '[Newsletter] BFF call failed: {message}', ['message' => $e->getMessage()]);
 
-            return $this->errorResponse('Failed to reach the API', 503);
+            return $this->errorResponse('Failed to reach the BFF', 503);
         }
     }
 
