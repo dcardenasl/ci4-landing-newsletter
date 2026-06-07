@@ -49,7 +49,7 @@ class NewsletterController extends BaseController
     {
         try {
             $client      = service('curlrequest');
-            $apiResponse = $client->post("{$bffUrl}/api/v1/subscribe", [
+            $apiResponse = $client->post("{$bffUrl}/api/v1/newsletter/subscribers", [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept'       => 'application/json',
