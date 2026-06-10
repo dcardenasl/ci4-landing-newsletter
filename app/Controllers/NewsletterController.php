@@ -27,6 +27,99 @@ class NewsletterController extends BaseController
         return $this->callBff($bffUrl, $payload);
     }
 
+    /**
+     * Double opt-in landing page: consumes the BFF confirm endpoint and
+     * renders a human-readable success/error page.
+     */
+    public function confirmPage(string $locale = self::DEFAULT_LOCALE, string $token = ''): string
+    {
+        $locale = $this->resolvePageLocale($locale);
+
+        $confirmed = $token !== '' && $this->callBffConfirm($token);
+
+        return view('frontend/pages/newsletter/confirm', $this->buildPageData($locale) + [
+            'confirmed' => $confirmed,
+        ]);
+    }
+
+    /**
+     * Unsubscribe landing page: shows a confirmation form for the token
+     * carried in `?token=` (campaign emails link here).
+     */
+    public function unsubscribePage(string $locale = self::DEFAULT_LOCALE): string
+    {
+        $locale = $this->resolvePageLocale($locale);
+        $token  = (string) ($this->request->getGet('token') ?? '');
+
+        return view('frontend/pages/newsletter/unsubscribe', $this->buildPageData($locale) + [
+            'token'  => $token,
+            'result' => null,
+        ]);
+    }
+
+    /**
+     * Handles the unsubscribe form POST and renders the outcome.
+     */
+    public function unsubscribe(string $locale = self::DEFAULT_LOCALE): string
+    {
+        $locale = $this->resolvePageLocale($locale);
+        $token  = (string) ($this->request->getPost('token') ?? '');
+
+        $result = $token !== '' && $this->callBffUnsubscribe($token);
+
+        return view('frontend/pages/newsletter/unsubscribe', $this->buildPageData($locale) + [
+            'token'  => $token,
+            'result' => $result,
+        ]);
+    }
+
+    private function callBffConfirm(string $token): bool
+    {
+        $bffUrl = rtrim(env('BFF_URL', ''), '/');
+        if (!$bffUrl) {
+            return false;
+        }
+
+        try {
+            $response = service('curlrequest')->get(
+                "{$bffUrl}/api/v1/newsletter/subscribers/confirm/" . urlencode($token),
+                ['headers' => ['Accept' => 'application/json'], 'timeout' => self::TIMEOUT_SECONDS, 'http_errors' => false],
+            );
+
+            return $response->getStatusCode() >= 200 && $response->getStatusCode() < 300;
+        } catch (\Exception $e) {
+            log_message('error', '[Newsletter] BFF confirm call failed: {message}', ['message' => $e->getMessage()]);
+
+            return false;
+        }
+    }
+
+    private function callBffUnsubscribe(string $token): bool
+    {
+        $bffUrl = rtrim(env('BFF_URL', ''), '/');
+        if (!$bffUrl) {
+            return false;
+        }
+
+        try {
+            $response = service('curlrequest')->post("{$bffUrl}/api/v1/newsletter/subscribers/unsubscribe", [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept'       => 'application/json',
+                ],
+                'body'        => json_encode(['token' => $token]),
+                'timeout'     => self::TIMEOUT_SECONDS,
+                'http_errors' => false,
+            ]);
+
+            return $response->getStatusCode() >= 200 && $response->getStatusCode() < 300;
+        } catch (\Exception $e) {
+            log_message('error', '[Newsletter] BFF unsubscribe call failed: {message}', ['message' => $e->getMessage()]);
+
+            return false;
+        }
+    }
+
     private function extractPayload(): array
     {
         return [

@@ -104,4 +104,21 @@ return [
         'subscribe_btn' => 'S\'abonner',
         'copyright' => '© 2026 NewsLanding. Un template de landing page d\'abonnement pour CodeIgniter 4.',
     ],
+
+    // NEWSLETTER CONFIRM / UNSUBSCRIBE PAGES
+    'newsletter' => [
+        'confirm_success_title' => 'Abonnement confirmé !',
+        'confirm_success_message' => 'Votre adresse e-mail a été vérifiée. Vous faites désormais partie de la liste.',
+        'confirm_error_title' => 'Impossible de confirmer votre abonnement',
+        'confirm_error_message' => 'Le lien est invalide ou a expiré. Veuillez réessayer de vous abonner.',
+        'unsubscribe_title' => 'Se désabonner',
+        'unsubscribe_prompt' => 'Voulez-vous vraiment ne plus recevoir nos e-mails ?',
+        'unsubscribe_button' => 'Oui, me désabonner',
+        'unsubscribe_success_title' => 'Désabonnement effectué',
+        'unsubscribe_success_message' => 'Vous ne recevrez plus nos e-mails. Vous pouvez vous réabonner à tout moment.',
+        'unsubscribe_error_title' => 'Impossible de traiter votre demande',
+        'unsubscribe_error_message' => 'Le lien est invalide ou a expiré. Si le problème persiste, contactez-nous.',
+        'missing_token' => 'Le code de désabonnement est absent du lien. Utilisez le lien inclus dans nos e-mails.',
+        'back_home' => "Retour à l'accueil",
+    ],
 ];

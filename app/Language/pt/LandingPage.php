@@ -104,4 +104,21 @@ return [
         'subscribe_btn' => 'Inscrever-se',
         'copyright' => '© 2026 NewsLanding. Um template de landing page de inscrições para CodeIgniter 4.',
     ],
+
+    // NEWSLETTER CONFIRM / UNSUBSCRIBE PAGES
+    'newsletter' => [
+        'confirm_success_title' => 'Assinatura confirmada!',
+        'confirm_success_message' => 'Seu e-mail foi verificado. Você já faz parte da lista.',
+        'confirm_error_title' => 'Não foi possível confirmar sua assinatura',
+        'confirm_error_message' => 'O link é inválido ou expirou. Tente se inscrever novamente.',
+        'unsubscribe_title' => 'Cancelar assinatura',
+        'unsubscribe_prompt' => 'Tem certeza de que não quer mais receber nossos e-mails?',
+        'unsubscribe_button' => 'Sim, cancelar minha assinatura',
+        'unsubscribe_success_title' => 'Assinatura cancelada',
+        'unsubscribe_success_message' => 'Você não receberá mais nossos e-mails. Pode se inscrever novamente quando quiser.',
+        'unsubscribe_error_title' => 'Não foi possível processar sua solicitação',
+        'unsubscribe_error_message' => 'O link é inválido ou expirou. Se o problema persistir, fale conosco.',
+        'missing_token' => 'O código de cancelamento está ausente do link. Use o link incluído em nossos e-mails.',
+        'back_home' => 'Voltar ao início',
+    ],
 ];

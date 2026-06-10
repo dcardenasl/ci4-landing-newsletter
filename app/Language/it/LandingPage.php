@@ -104,4 +104,21 @@ return [
         'subscribe_btn' => 'Iscriviti',
         'copyright' => '© 2026 NewsLanding. Un template di landing page per iscrizioni su CodeIgniter 4.',
     ],
+
+    // NEWSLETTER CONFIRM / UNSUBSCRIBE PAGES
+    'newsletter' => [
+        'confirm_success_title' => 'Iscrizione confermata!',
+        'confirm_success_message' => 'La tua email è stata verificata. Ora fai parte della lista.',
+        'confirm_error_title' => 'Non siamo riusciti a confermare la tua iscrizione',
+        'confirm_error_message' => 'Il link non è valido o è scaduto. Prova a iscriverti di nuovo.',
+        'unsubscribe_title' => 'Annulla iscrizione',
+        'unsubscribe_prompt' => 'Sei sicuro di non voler più ricevere le nostre email?',
+        'unsubscribe_button' => 'Sì, annulla la mia iscrizione',
+        'unsubscribe_success_title' => 'Iscrizione annullata',
+        'unsubscribe_success_message' => 'Non riceverai più le nostre email. Puoi iscriverti di nuovo quando vuoi.',
+        'unsubscribe_error_title' => 'Non siamo riusciti a elaborare la richiesta',
+        'unsubscribe_error_message' => 'Il link non è valido o è scaduto. Se il problema persiste, contattaci.',
+        'missing_token' => 'Manca il codice di annullamento nel link. Usa il link incluso nelle nostre email.',
+        'back_home' => 'Torna alla home',
+    ],
 ];

@@ -102,5 +102,22 @@ return [
         'email_placeholder' => 'tu@email.com',
         'subscribe_btn' => 'Suscribirme',
         'copyright' => '© 2026 NewsLanding. Una plantilla de landing page de suscripción en CodeIgniter 4.',
-    ]
+    ],
+
+    // NEWSLETTER CONFIRM / UNSUBSCRIBE PAGES
+    'newsletter' => [
+        'confirm_success_title' => '¡Suscripción confirmada!',
+        'confirm_success_message' => 'Tu correo ha sido verificado. Ya formas parte de la lista.',
+        'confirm_error_title' => 'No pudimos confirmar tu suscripción',
+        'confirm_error_message' => 'El enlace no es válido o ya expiró. Intenta suscribirte de nuevo.',
+        'unsubscribe_title' => 'Cancelar suscripción',
+        'unsubscribe_prompt' => '¿Seguro que quieres dejar de recibir nuestros correos?',
+        'unsubscribe_button' => 'Sí, darme de baja',
+        'unsubscribe_success_title' => 'Suscripción cancelada',
+        'unsubscribe_success_message' => 'No volverás a recibir nuestros correos. Puedes suscribirte de nuevo cuando quieras.',
+        'unsubscribe_error_title' => 'No pudimos procesar la baja',
+        'unsubscribe_error_message' => 'El enlace no es válido o ya expiró. Si el problema persiste, contáctanos.',
+        'missing_token' => 'Falta el código de baja en el enlace. Usa el enlace incluido en nuestros correos.',
+        'back_home' => 'Volver al inicio',
+    ],
 ];

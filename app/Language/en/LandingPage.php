@@ -104,4 +104,21 @@ return [
         'subscribe_btn' => 'Subscribe',
         'copyright' => '© 2026 NewsLanding. A CodeIgniter 4 subscription landing page template.',
     ],
+
+    // NEWSLETTER CONFIRM / UNSUBSCRIBE PAGES
+    'newsletter' => [
+        'confirm_success_title' => 'Subscription confirmed!',
+        'confirm_success_message' => 'Your email has been verified. You are now on the list.',
+        'confirm_error_title' => 'We could not confirm your subscription',
+        'confirm_error_message' => 'The link is invalid or has expired. Please try subscribing again.',
+        'unsubscribe_title' => 'Unsubscribe',
+        'unsubscribe_prompt' => 'Are you sure you want to stop receiving our emails?',
+        'unsubscribe_button' => 'Yes, unsubscribe me',
+        'unsubscribe_success_title' => 'You have been unsubscribed',
+        'unsubscribe_success_message' => 'You will no longer receive our emails. You can subscribe again anytime.',
+        'unsubscribe_error_title' => 'We could not process your request',
+        'unsubscribe_error_message' => 'The link is invalid or has expired. If the problem persists, contact us.',
+        'missing_token' => 'The unsubscribe code is missing from the link. Please use the link included in our emails.',
+        'back_home' => 'Back to home',
+    ],
 ];
