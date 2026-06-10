@@ -3,7 +3,7 @@
 if (!function_exists('recaptcha_script')) {
     function recaptcha_script(): string
     {
-        $siteKey = env('RECAPTCHA_SITE_KEY', '');
+        $siteKey = project_recaptcha_site_key();
         return '<script src="https://www.google.com/recaptcha/api.js?render=' . $siteKey . '"></script>';
     }
 }
@@ -11,7 +11,7 @@ if (!function_exists('recaptcha_script')) {
 if (!function_exists('recaptcha_site_key_js')) {
     function recaptcha_site_key_js(): string
     {
-        $siteKey = env('RECAPTCHA_SITE_KEY', '');
+        $siteKey = project_recaptcha_site_key();
         return "<script>window.RECAPTCHA_SITE_KEY = '{$siteKey}';</script>";
     }
 }
@@ -19,7 +19,7 @@ if (!function_exists('recaptcha_site_key_js')) {
 if (!function_exists('recaptcha_js')) {
     function recaptcha_js(string $action = 'submit', ?string $callback = null, string $elementId = 'recaptcha_token'): string
     {
-        $siteKey         = env('RECAPTCHA_SITE_KEY', '');
+        $siteKey = project_recaptcha_site_key();
         $callbackFunction = $callback ?: "function(token) {
             const element = document.querySelector('[name=\"{$elementId}\"]');
             if (element) element.value = token;

@@ -20,12 +20,46 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+    protected const DEFAULT_LOCALE = 'es';
+
     /**
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
 
     // protected $session;
+
+    /**
+     * Validates the locale against the supported list and activates it.
+     */
+    protected function resolvePageLocale(string $locale): string
+    {
+        $supportedLocales = config(\Config\App::class)->supportedLocales ?? [self::DEFAULT_LOCALE];
+        $locale = in_array($locale, $supportedLocales, true) ? $locale : self::DEFAULT_LOCALE;
+        service('language')->setLocale($locale);
+
+        return $locale;
+    }
+
+    /**
+     * Common view data every page rendered with the landing layout needs.
+     *
+     * @return array<string, mixed>
+     */
+    protected function buildPageData(string $locale): array
+    {
+        return [
+            'locale'           => $locale,
+            'supportedLocales' => get_language_selector_data($locale),
+            'siteConfig'       => config(\Config\SiteConfig::class),
+            'appConfig'        => [
+                'projectKey'         => env('PROJECT_KEY', ''),
+                'projectName'        => project_display_name(),
+                'recaptchaSiteKey'   => project_recaptcha_site_key(),
+                'newsletterEndpoint' => base_url("/{$locale}/api/newsletter/subscribe"),
+            ],
+        ];
+    }
 
     /**
      * @return void
