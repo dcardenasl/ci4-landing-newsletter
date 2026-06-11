@@ -8,7 +8,7 @@ class NewsletterController extends BaseController
 {
     private const TIMEOUT_SECONDS = 10;
 
-    public function subscribe(): ResponseInterface
+    public function subscribe(string $locale = self::DEFAULT_LOCALE): ResponseInterface
     {
         $bffUrl     = rtrim(env('BFF_URL', ''), '/');
         $projectKey = env('PROJECT_KEY', '');
@@ -19,6 +19,10 @@ class NewsletterController extends BaseController
 
         $payload                = $this->extractPayload();
         $payload['project_key'] = $projectKey;
+
+        if (empty($payload['locale'])) {
+            $payload['locale'] = $locale;
+        }
 
         if (!$this->isValidPayload($payload)) {
             return $this->errorResponse('Invalid email or reCAPTCHA token', 400);
@@ -123,9 +127,10 @@ class NewsletterController extends BaseController
     private function extractPayload(): array
     {
         return [
-            'email' => sanitize_email($this->request->getPost('email') ?? ''),
-            'recaptcha_token' => $this->request->getPost('recaptcha_token') ?? '',
-            'invitation_code' => $this->request->getPost('invitation_code') ?? '',
+            'email' => sanitize_email($this->request->getPost('email') ?? $this->request->getJsonVar('email') ?? ''),
+            'recaptcha_token' => $this->request->getPost('recaptcha_token') ?? $this->request->getJsonVar('recaptcha_token') ?? '',
+            'invitation_code' => $this->request->getPost('invitation_code') ?? $this->request->getJsonVar('invitation_code') ?? '',
+            'locale' => $this->request->getPost('locale') ?? $this->request->getJsonVar('locale') ?? null,
         ];
     }
 

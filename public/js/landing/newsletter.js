@@ -152,12 +152,13 @@ class Newsletter {
 
   async handleSubscription(email, recaptchaToken) {
     try {
-      // Preparar datos para enviar (incluir código de invitación si existe)
+      // Preparar datos para enviar (incluir código de invitación e idioma si existen)
       const requestData = {
         email: email,
         source: window.APP_CONFIG?.siteId || "newsletter-landing",
         timestamp: new Date().toISOString(),
         recaptcha_token: recaptchaToken,
+        locale: window.APP_CONFIG?.locale || "es",
       };
 
       // Agregar código de invitación si está disponible
