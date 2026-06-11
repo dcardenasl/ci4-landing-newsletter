@@ -1,5 +1,5 @@
 <!-- FAQ Section -->
-<section class="faq-section d-flex justify-content-center py-5">
+<section class="faq-section d-flex justify-content-center py-5" data-analytics-section="faq">
     <div class="container">
         <div class="row justify-content-center mb-5 scale-in delay-2">
             <div class="col-12 col-lg-10 d-flex justify-content-center">

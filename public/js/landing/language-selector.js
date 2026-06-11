@@ -68,6 +68,16 @@ class LanguageSelector {
   selectLanguage(option) {
     const locale = option.dataset.locale;
     const url = option.dataset.url;
+    const currentLocale = document.documentElement.lang || "";
+
+    if (window.LandingAnalytics) {
+      window.LandingAnalytics.track("language_change", {
+        metadata: {
+          from: currentLocale,
+          to: locale,
+        },
+      });
+    }
 
     // Add loading state to the clicked option
     option.style.opacity = "0.7";

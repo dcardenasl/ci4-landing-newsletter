@@ -72,4 +72,21 @@ final class NewsletterPagesTest extends CIUnitTestCase
         $result->assertStatus(200);
         $result->assertSee('We could not confirm your subscription');
     }
+
+    public function testHomePageExposesAnalyticsEndpoint(): void
+    {
+        $result = $this->call('get', '/');
+
+        $result->assertStatus(200);
+        $this->assertStringContainsString('analyticsEndpoint', $result->getBody());
+    }
+
+    public function testConfirmPageInjectsAnalyticsContext(): void
+    {
+        $result = $this->call('get', 'confirm/invalid-token');
+
+        $result->assertStatus(200);
+        $this->assertStringContainsString('confirm_error', $result->getBody());
+        $this->assertStringContainsString('pageContextEvent', $result->getBody());
+    }
 }

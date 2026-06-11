@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="hero-section d-flex justify-content-center">
+<section class="hero-section d-flex justify-content-center" data-analytics-section="hero">
     <div class="container">
         <div class="row align-items-center g-4 g-lg-5">
             <div class="col-lg-5 col-md-12">
@@ -7,7 +7,7 @@
                 <p class="hero-description font-secondary fw-light fade-in-up"><?= lang('LandingPage.hero.description') ?></p>
                 <div class="form-newsletter-container p-4 fade-in-left delay-3">
                     <p class="newsletter-text-instructions text-center"><?= lang('LandingPage.hero.newsletter_instruction') ?></p>
-                    <form class="form-newsletter" data-newsletter-form>
+                    <form class="form-newsletter" data-newsletter-form data-analytics-form="hero-newsletter">
                         <div class="input-group">
                             <input
                                 type="email"

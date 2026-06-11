@@ -1,5 +1,5 @@
 <!-- Header Section -->
-<header class="header">
+<header class="header" data-analytics-section="header">
     <div class="container">
         <div class="header-bar">
             <div class="brand-group">

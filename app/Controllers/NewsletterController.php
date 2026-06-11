@@ -38,10 +38,17 @@ class NewsletterController extends BaseController
     public function confirmPage(string $locale = self::DEFAULT_LOCALE, string $token = ''): string
     {
         $locale = $this->resolvePageLocale($locale);
+        $pageData = $this->buildPageData($locale);
 
         $confirmed = $token !== '' && $this->callBffConfirm($token);
 
-        return view('frontend/pages/newsletter/confirm', $this->buildPageData($locale) + [
+        $pageData['appConfig'] = $pageData['appConfig'] + [
+            'pageType' => 'confirm',
+            'pageState' => $confirmed ? 'success' : 'error',
+            'pageContextEvent' => $confirmed ? 'confirm_accepted' : 'confirm_error',
+        ];
+
+        return view('frontend/pages/newsletter/confirm', $pageData + [
             'confirmed' => $confirmed,
         ]);
     }
@@ -53,9 +60,16 @@ class NewsletterController extends BaseController
     public function unsubscribePage(string $locale = self::DEFAULT_LOCALE): string
     {
         $locale = $this->resolvePageLocale($locale);
+        $pageData = $this->buildPageData($locale);
         $token  = (string) ($this->request->getGet('token') ?? '');
 
-        return view('frontend/pages/newsletter/unsubscribe', $this->buildPageData($locale) + [
+        $pageData['appConfig'] = $pageData['appConfig'] + [
+            'pageType' => 'unsubscribe',
+            'pageState' => $token !== '' ? 'prompt' : 'missing_token',
+            'pageContextEvent' => 'unsubscribe_view',
+        ];
+
+        return view('frontend/pages/newsletter/unsubscribe', $pageData + [
             'token'  => $token,
             'result' => null,
         ]);
@@ -67,14 +81,51 @@ class NewsletterController extends BaseController
     public function unsubscribe(string $locale = self::DEFAULT_LOCALE): string
     {
         $locale = $this->resolvePageLocale($locale);
+        $pageData = $this->buildPageData($locale);
         $token  = (string) ($this->request->getPost('token') ?? '');
 
         $result = $token !== '' && $this->callBffUnsubscribe($token);
 
-        return view('frontend/pages/newsletter/unsubscribe', $this->buildPageData($locale) + [
+        $pageData['appConfig'] = $pageData['appConfig'] + [
+            'pageType' => 'unsubscribe',
+            'pageState' => $result ? 'success' : 'error',
+            'pageContextEvent' => $result ? 'unsubscribe_accepted' : 'unsubscribe_error',
+        ];
+
+        return view('frontend/pages/newsletter/unsubscribe', $pageData + [
             'token'  => $token,
             'result' => $result,
         ]);
+    }
+
+    public function analyticsEvents(string $locale = self::DEFAULT_LOCALE): ResponseInterface
+    {
+        $bffUrl = rtrim(env('BFF_URL', ''), '/');
+        if (!$bffUrl) {
+            return $this->errorResponse('BFF configuration is incomplete', 500);
+        }
+
+        try {
+            $client = service('curlrequest');
+            $apiResponse = $client->post("{$bffUrl}/api/v1/newsletter/analytics/events", [
+                'headers' => [
+                    'Content-Type' => $this->request->getHeaderLine('Content-Type') ?: 'application/json',
+                    'Accept'       => 'application/json',
+                ],
+                'body'        => $this->request->getBody(),
+                'timeout'     => self::TIMEOUT_SECONDS,
+                'http_errors' => false,
+            ]);
+
+            return $this->response
+                ->setStatusCode($apiResponse->getStatusCode())
+                ->setContentType('application/json')
+                ->setBody($apiResponse->getBody() ?: '{}');
+        } catch (\Exception $e) {
+            log_message('error', '[Newsletter] BFF analytics proxy failed: {message}', ['message' => $e->getMessage()]);
+
+            return $this->errorResponse('Failed to reach the BFF', 503);
+        }
     }
 
     private function callBffConfirm(string $token): bool
@@ -130,6 +181,7 @@ class NewsletterController extends BaseController
             'email' => sanitize_email($this->request->getPost('email') ?? $this->request->getJsonVar('email') ?? ''),
             'recaptcha_token' => $this->request->getPost('recaptcha_token') ?? $this->request->getJsonVar('recaptcha_token') ?? '',
             'invitation_code' => $this->request->getPost('invitation_code') ?? $this->request->getJsonVar('invitation_code') ?? '',
+            'analytics_session_id' => $this->request->getPost('analytics_session_id') ?? $this->request->getJsonVar('analytics_session_id') ?? null,
             'locale' => $this->request->getPost('locale') ?? $this->request->getJsonVar('locale') ?? null,
         ];
     }

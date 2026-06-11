@@ -11,8 +11,9 @@ class HomeController extends BaseController
         $locale = $this->resolvePageLocale($locale);
 
         $siteConfig = config(SiteConfig::class);
+        $pageData = $this->buildPageData($locale);
 
-        return view('frontend/pages/home/index', $this->buildPageData($locale) + [
+        return view('frontend/pages/home/index', $pageData + [
             'enabledSections' => $siteConfig->getEnabledSections(),
         ]);
     }

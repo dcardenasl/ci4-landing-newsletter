@@ -57,7 +57,9 @@ abstract class BaseController extends Controller
                 'projectName'        => project_display_name(),
                 'recaptchaSiteKey'   => project_recaptcha_site_key(),
                 'newsletterEndpoint' => base_url("/{$locale}/api/newsletter/subscribe"),
+                'analyticsEndpoint'  => base_url("/{$locale}/api/newsletter/analytics/events"),
                 'locale'             => $locale,
+                'pageType'           => 'home',
             ],
         ];
     }

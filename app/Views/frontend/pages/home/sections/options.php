@@ -1,5 +1,5 @@
 <!-- Options Section -->
-<section class="options-section bg-alt d-flex justify-content-center">
+<section class="options-section bg-alt d-flex justify-content-center" data-analytics-section="options">
     <div class="container py-5">
         <!-- Option 1 -->
         <div class="row align-items-center g-4 g-lg-5 mb-5">

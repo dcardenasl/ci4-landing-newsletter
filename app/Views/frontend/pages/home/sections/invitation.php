@@ -1,5 +1,5 @@
 <!-- Invitation Section -->
-<section class="invitation-section bg-alt d-flex justify-content-center py-5">
+<section class="invitation-section bg-alt d-flex justify-content-center py-5" data-analytics-section="invitation">
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-12 scale-in delay-1">
@@ -9,7 +9,7 @@
                 <p class="newsletter-text-instructions text-center scale-in delay-2">
                     <?= lang('LandingPage.footer.newsletter_text') ?>
                 </p>
-                <form class="form-newsletter scale-in delay-3" data-newsletter-form>
+                <form class="form-newsletter scale-in delay-3" data-newsletter-form data-analytics-form="footer-newsletter">
                     <div class="input-group">
                         <input
                             type="email"

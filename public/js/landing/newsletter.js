@@ -5,6 +5,7 @@ class Newsletter {
     this.form = formElement;
     this.siteKey = window.APP_CONFIG?.recaptchaSiteKey || "";
     this.invitationCode = this.getInvitationCodeFromURL();
+    this.analytics = window.LandingAnalytics || null;
     this.initializeElements();
     this.bindEvents();
     this.displayInvitationStatus();
@@ -57,9 +58,22 @@ class Newsletter {
       this.form.appendChild(this.invitationInput);
     }
 
+    // Ensure the analytics session id is posted with the subscription form.
+    this.analyticsInput = this.form.querySelector('[name="analytics_session_id"]');
+    if (!this.analyticsInput) {
+      this.analyticsInput = document.createElement("input");
+      this.analyticsInput.type = "hidden";
+      this.analyticsInput.name = "analytics_session_id";
+      this.form.appendChild(this.analyticsInput);
+    }
+
     // Set invitation code value if available
     if (this.invitationCode) {
       this.invitationInput.value = this.invitationCode;
+    }
+
+    if (this.analytics?.sessionId) {
+      this.analyticsInput.value = this.analytics.sessionId;
     }
   }
 
@@ -106,6 +120,20 @@ class Newsletter {
     if (this.feedbackMessage.style.display === "block") {
       this.feedbackMessage.style.display = "none";
     }
+  }
+
+  trackAnalytics(eventName, options = {}) {
+    if (!this.analytics) {
+      return;
+    }
+
+    this.analytics.track(eventName, {
+      formKey: this.form.dataset.analyticsForm || "newsletter-form",
+      metadata: {
+        form_type: this.form.dataset.analyticsForm || "newsletter-form",
+        ...options.metadata,
+      },
+    });
   }
 
   async getRecaptchaToken() {
@@ -159,6 +187,8 @@ class Newsletter {
         timestamp: new Date().toISOString(),
         recaptcha_token: recaptchaToken,
         locale: window.APP_CONFIG?.locale || "es",
+        analytics_session_id:
+          this.analyticsInput?.value || this.analytics?.sessionId || "",
       };
 
       // Agregar código de invitación si está disponible
@@ -188,8 +218,17 @@ class Newsletter {
       const data = await response.json();
 
       if (response.ok) {
+        this.trackAnalytics("subscribe_accepted", {
+          metadata: { status_code: response.status },
+        });
         this.handleSuccess(data);
       } else {
+        this.trackAnalytics("form_error", {
+          metadata: {
+            reason: "api_error",
+            status_code: response.status,
+          },
+        });
         this.handleError(data);
       }
     } catch (error) {
@@ -200,6 +239,9 @@ class Newsletter {
         "error"
       );
       this.emailInput.classList.add("is-invalid");
+      this.trackAnalytics("form_error", {
+        metadata: { reason: "network_error" },
+      });
     }
   }
 
@@ -253,6 +295,12 @@ class Newsletter {
       this.showFeedback(errorMessage, "error");
     }
     this.emailInput.classList.add("is-invalid");
+    this.trackAnalytics("form_error", {
+      metadata: {
+        reason: "validation",
+        has_field_errors: Boolean(data.errors),
+      },
+    });
   }
 
   async handleSubmit(e) {
@@ -298,6 +346,9 @@ class Newsletter {
         "error"
       );
       this.emailInput.classList.add("is-invalid");
+      this.trackAnalytics("form_error", {
+        metadata: { reason: "recaptcha_error" },
+      });
     } finally {
       this.setLoadingState(false);
     }

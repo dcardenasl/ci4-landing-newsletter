@@ -1,5 +1,5 @@
 <!-- Footer Section -->
-<footer class="footer-section d-flex justify-content-center">
+<footer class="footer-section d-flex justify-content-center" data-analytics-section="footer">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
