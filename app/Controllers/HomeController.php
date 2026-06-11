@@ -2,25 +2,19 @@
 
 namespace App\Controllers;
 
+use Config\SiteConfig;
+
 class HomeController extends BaseController
 {
-    public function index(string $locale = 'es'): string
+    public function index(string $locale = self::DEFAULT_LOCALE): string
     {
-        $supported = ['es', 'en', 'pt', 'it', 'fr'];
-        if (!in_array($locale, $supported)) {
-            $locale = 'es';
-        }
+        $locale = $this->resolvePageLocale($locale);
 
-        service('language')->setLocale($locale);
+        $siteConfig = config(SiteConfig::class);
+        $pageData = $this->buildPageData($locale);
 
-        return view('frontend/pages/home/landing', [
-            'locale'           => $locale,
-            'supportedLocales' => get_language_selector_data($locale),
-            'appConfig'        => [
-                'siteId'             => getenv('SITE_ID') ?: 'default',
-                'recaptchaSiteKey'   => getenv('RECAPTCHA_SITE_KEY') ?: '',
-                'newsletterEndpoint' => base_url("/{$locale}/api/newsletter/subscribe"),
-            ],
+        return view('frontend/pages/home/index', $pageData + [
+            'enabledSections' => $siteConfig->getEnabledSections(),
         ]);
     }
 }

@@ -88,5 +88,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['language', 'recaptcha'];
+    public $helpers = ['language', 'project_config', 'recaptcha', 'validation'];
 }

@@ -1,12 +1,19 @@
-/* Hero Section */
+/* ==========================================================================
+   HERO
+   ========================================================================== */
 .hero-section {
-  margin-top: 40px;
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
 }
 
 .hero-title {
   display: inline-block;
-  transform: scale(1, 1.1);
-  margin-bottom: var(--space-8);
+  color: var(--text-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(30px) scale(1, 1.1);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .hero-title strong {
@@ -14,29 +21,64 @@
   color: var(--text-secondary);
 }
 
+.hero-title.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1, 1.1);
+}
+
 .hero-description {
+  color: var(--text-primary);
   margin-bottom: var(--space-8);
+  max-width: 52ch;
 }
 
 .hero-description strong {
   font-weight: var(--fw-semibold);
-  color: var(--text-dark);
+  color: var(--text-heading);
 }
 
-/* Responsive Design */
-@media (max-width: 425px) {
+/* Imagen principal — bordes y sombra coherentes con el sistema */
+.hero-image {
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tarjetas de iconos bajo el hero */
+.hero-feature {
+  padding: var(--space-4);
+}
+
+.hero-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary); /* hereda a los SVG vía currentColor */
+}
+
+.hero-feature-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-option-title {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
   .hero-section {
-    margin-top: 80px;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
   }
 }
 
-.hero-title {
-  opacity: 0;
-  transform: translateY(30px) scale(1, 1.1);
-  transition: all 0.8s ease-out;
-}
-
-.hero-title.animate {
-  opacity: 1;
-  transform: translateY(0) scale(1, 1.1);
+@media (max-width: 425px) {
+  .hero-section {
+    padding-top: var(--space-20);
+  }
 }

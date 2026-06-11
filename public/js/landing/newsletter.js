@@ -5,6 +5,7 @@ class Newsletter {
     this.form = formElement;
     this.siteKey = window.APP_CONFIG?.recaptchaSiteKey || "";
     this.invitationCode = this.getInvitationCodeFromURL();
+    this.analytics = window.LandingAnalytics || null;
     this.initializeElements();
     this.bindEvents();
     this.displayInvitationStatus();
@@ -24,9 +25,6 @@ class Newsletter {
    */
   displayInvitationStatus() {
     if (this.invitationCode) {
-      console.log("Código de invitación detectado:", this.invitationCode);
-
-      // Opcional: Mostrar un mensaje visual al usuario
       const invitationBadge = this.form.querySelector(".invitation-badge");
       if (invitationBadge) {
         invitationBadge.textContent = `Código de invitación: ${this.invitationCode}`;
@@ -36,36 +34,46 @@ class Newsletter {
   }
 
   initializeElements() {
-    // Find elements within the specific form scope using the original IDs
-    this.emailInput = this.form.querySelector("#email-input");
-    this.submitBtn = this.form.querySelector("#submit-btn");
+    this.emailInput = this.form.querySelector('[name="email"]');
+    this.submitBtn = this.form.querySelector('[type="submit"]');
     this.btnText = this.submitBtn.querySelector(".btn-text");
     this.loadingSpinner = this.submitBtn.querySelector(".loading-spinner");
-    this.feedbackMessage = this.form.querySelector("#feedback-message");
+    this.feedbackMessage = this.form.querySelector(".feedback-message");
 
     // Create hidden input for reCAPTCHA token if it doesn't exist
-    this.recaptchaInput = this.form.querySelector("#recaptcha_token");
+    this.recaptchaInput = this.form.querySelector('[name="recaptcha_token"]');
     if (!this.recaptchaInput) {
       this.recaptchaInput = document.createElement("input");
       this.recaptchaInput.type = "hidden";
-      this.recaptchaInput.id = "recaptcha_token";
       this.recaptchaInput.name = "recaptcha_token";
       this.form.appendChild(this.recaptchaInput);
     }
 
     // Create hidden input for invitation code if it doesn't exist
-    this.invitationInput = this.form.querySelector("#invitation_code");
+    this.invitationInput = this.form.querySelector('[name="invitation_code"]');
     if (!this.invitationInput) {
       this.invitationInput = document.createElement("input");
       this.invitationInput.type = "hidden";
-      this.invitationInput.id = "invitation_code";
       this.invitationInput.name = "invitation_code";
       this.form.appendChild(this.invitationInput);
+    }
+
+    // Ensure the analytics session id is posted with the subscription form.
+    this.analyticsInput = this.form.querySelector('[name="analytics_session_id"]');
+    if (!this.analyticsInput) {
+      this.analyticsInput = document.createElement("input");
+      this.analyticsInput.type = "hidden";
+      this.analyticsInput.name = "analytics_session_id";
+      this.form.appendChild(this.analyticsInput);
     }
 
     // Set invitation code value if available
     if (this.invitationCode) {
       this.invitationInput.value = this.invitationCode;
+    }
+
+    if (this.analytics?.sessionId) {
+      this.analyticsInput.value = this.analytics.sessionId;
     }
   }
 
@@ -114,6 +122,20 @@ class Newsletter {
     }
   }
 
+  trackAnalytics(eventName, options = {}) {
+    if (!this.analytics) {
+      return;
+    }
+
+    this.analytics.track(eventName, {
+      formKey: this.form.dataset.analyticsForm || "newsletter-form",
+      metadata: {
+        form_type: this.form.dataset.analyticsForm || "newsletter-form",
+        ...options.metadata,
+      },
+    });
+  }
+
   async getRecaptchaToken() {
     // Get reCAPTCHA token for the newsletter subscription action
     return new Promise((resolve, reject) => {
@@ -158,23 +180,21 @@ class Newsletter {
 
   async handleSubscription(email, recaptchaToken) {
     try {
-      // Preparar datos para enviar (incluir código de invitación si existe)
+      // Preparar datos para enviar (incluir código de invitación e idioma si existen)
       const requestData = {
         email: email,
-        source: "bym-landing",
+        source: window.APP_CONFIG?.siteId || "newsletter-landing",
         timestamp: new Date().toISOString(),
         recaptcha_token: recaptchaToken,
+        locale: window.APP_CONFIG?.locale || "es",
+        analytics_session_id:
+          this.analyticsInput?.value || this.analytics?.sessionId || "",
       };
 
       // Agregar código de invitación si está disponible
       if (this.invitationCode) {
         requestData.invitation_code = this.invitationCode;
       }
-
-      console.log("Sending subscription data:", {
-        ...requestData,
-        recaptcha_token: "***hidden***", // No mostrar el token en logs
-      });
 
       // Headers for the request
       const headers = {
@@ -198,8 +218,17 @@ class Newsletter {
       const data = await response.json();
 
       if (response.ok) {
+        this.trackAnalytics("subscribe_accepted", {
+          metadata: { status_code: response.status },
+        });
         this.handleSuccess(data);
       } else {
+        this.trackAnalytics("form_error", {
+          metadata: {
+            reason: "api_error",
+            status_code: response.status,
+          },
+        });
         this.handleError(data);
       }
     } catch (error) {
@@ -210,6 +239,9 @@ class Newsletter {
         "error"
       );
       this.emailInput.classList.add("is-invalid");
+      this.trackAnalytics("form_error", {
+        metadata: { reason: "network_error" },
+      });
     }
   }
 
@@ -263,6 +295,12 @@ class Newsletter {
       this.showFeedback(errorMessage, "error");
     }
     this.emailInput.classList.add("is-invalid");
+    this.trackAnalytics("form_error", {
+      metadata: {
+        reason: "validation",
+        has_field_errors: Boolean(data.errors),
+      },
+    });
   }
 
   async handleSubmit(e) {
@@ -308,6 +346,9 @@ class Newsletter {
         "error"
       );
       this.emailInput.classList.add("is-invalid");
+      this.trackAnalytics("form_error", {
+        metadata: { reason: "recaptcha_error" },
+      });
     } finally {
       this.setLoadingState(false);
     }
@@ -316,8 +357,7 @@ class Newsletter {
 
 // Initialize newsletter functionality for all forms when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all forms with ID "newsletter-form" (there might be duplicates)
-  const newsletterForms = document.querySelectorAll("#newsletter-form");
+  const newsletterForms = document.querySelectorAll("[data-newsletter-form]");
 
   // Create Newsletter instance for each form
   newsletterForms.forEach((form) => {
